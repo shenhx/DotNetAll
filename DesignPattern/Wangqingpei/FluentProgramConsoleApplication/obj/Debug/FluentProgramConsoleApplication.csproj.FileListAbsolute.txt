@@ -1,0 +1,5 @@
+D:\Projects\垃圾堆\DotNet\Console\DesignPatternConsoleApplication\FluentProgramConsoleApplication\bin\Debug\FluentProgramConsoleApplication.exe
+D:\Projects\垃圾堆\DotNet\Console\DesignPatternConsoleApplication\FluentProgramConsoleApplication\bin\Debug\FluentProgramConsoleApplication.pdb
+D:\Projects\垃圾堆\DotNet\Console\DesignPatternConsoleApplication\FluentProgramConsoleApplication\obj\Debug\FluentProgramConsoleApplication.csprojResolveAssemblyReference.cache
+D:\Projects\垃圾堆\DotNet\Console\DesignPatternConsoleApplication\FluentProgramConsoleApplication\obj\Debug\FluentProgramConsoleApplication.exe
+D:\Projects\垃圾堆\DotNet\Console\DesignPatternConsoleApplication\FluentProgramConsoleApplication\obj\Debug\FluentProgramConsoleApplication.pdb
