@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecificationOutHitchConsol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageComponentConsoleApplication", "LanguageComponentConsoleApplication\LanguageComponentConsoleApplication.csproj", "{72FF8AE6-0F40-40E9-B14C-B75F03B0E7E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractConsoleApplication", "ContractConsoleApplication\ContractConsoleApplication.csproj", "{56AE261F-63E9-4EC2-BFCE-B6C3E357145A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{72FF8AE6-0F40-40E9-B14C-B75F03B0E7E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72FF8AE6-0F40-40E9-B14C-B75F03B0E7E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72FF8AE6-0F40-40E9-B14C-B75F03B0E7E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56AE261F-63E9-4EC2-BFCE-B6C3E357145A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56AE261F-63E9-4EC2-BFCE-B6C3E357145A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56AE261F-63E9-4EC2-BFCE-B6C3E357145A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56AE261F-63E9-4EC2-BFCE-B6C3E357145A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
