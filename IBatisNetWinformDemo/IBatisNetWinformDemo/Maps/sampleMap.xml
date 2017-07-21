@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<sqlMap namespace="Kingdee.Passp.Server.Entity" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="sampleEntity" type="IBatisNetWinformDemo.Entities.SampleEntity, IBatisNetWinformDemo" />
+  </alias>
+  
+  <resultMaps>
+    <resultMap id="sampleEntityResult" class="sampleEntity">
+      <result property="Id" column="FID"/>
+      <result property="Name" column="FNAME"/>
+      <result property="Remark" column="FREMARK"/>
+    </resultMap>
+  </resultMaps>
+
+  <parameterMaps>
+    <parameterMap id="procSampleParameter" class="hashtable">
+      <!--注意：column必须为大写字母，否则会报存储过程中不存在该名称-->
+      <parameter property="xmlParam" coloumn="AS_XMLPARAM" dbType="varchar"/>
+      <parameter property="returnNo" type="int" column="ON_RETURN" dbType="number" direction="Output"/>
+      <parameter property="message" column="OS_MESSAGE" dbType="varchar2" direction="Output"/>
+      <parameter property="curTemp" column="ACUR_TEMP"  dbType="Cursor"  direction="Output" />
+    </parameterMap>
+    <parameterMap id="insertSampleParameter">
+      <parameter property="Id" />
+      <parameter property="Name" />
+      <parameter property="Remark" />
+    </parameterMap>
+  </parameterMaps>
+
+  <!-- =============================================
+        MAPPED STATEMENTS 
+    ============================================= 
+    -->
+  <statements>
+    <!--select-->
+    <statement id="QueryByName" resultMap="sampleEntityResult" parameterClass="string">
+      <![CDATA[
+        select * from p_sample where fname = #Name#
+      ]]>
+    </statement>
+    <!--insert-->
+    <statement id="InsertSample" parameterClass ="sampleEntity">
+      <![CDATA[
+        insert into p_sample (fid, fname, fremark)
+        values (#Id# , #Name# , #Remark#)
+      ]]>
+    </statement>
+    <!--update-->
+    <statement id="UpdateSample" parameterClass ="sampleEntity">
+      <![CDATA[
+        update p_sample 
+        set fname = #Name#,
+        fremark = #Remark# 
+        where fid = #Id#
+      ]]>
+    </statement>
+    <!--delete-->
+    <statement id="DeleteSample" parameterClass ="sampleEntity">
+      <![CDATA[
+        delete from p_sample where fid = #Id#
+      ]]>
+    </statement>
+    <procedure id="GetSampleDataProcedure" parameterMap="procSampleParameter" resultMap="sampleEntityResult">
+      proc_samples.proc_sample
+    </procedure>
+  </statements>
+
+
+</sqlMap>

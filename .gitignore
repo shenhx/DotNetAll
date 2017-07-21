@@ -28,6 +28,7 @@
 *.exe
 *.out
 *.app
+*.suo
 
 # Directory
 bin
