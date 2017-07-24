@@ -1,10 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<sqlMap namespace="Kingdee.Passp.Server.Entity" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<sqlMap namespace="Entity" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <alias>
     <typeAlias alias="sampleEntity" type="IBatisNetWinformDemo.Entities.SampleEntity, IBatisNetWinformDemo" />
   </alias>
-  
+
+  <cacheModel id="sample-cache" implementation="LRU">
+    <flushInterval hours="24"/>
+    <flushOnExecute statement="InsertSample"/>
+    <flushOnExecute statement="UpdateSample"/>
+    <flushOnExecute statement="DeleteSample"/>
+    <property name="size" value="1000" />
+  </cacheModel>
+
   <resultMaps>
     <resultMap id="sampleEntityResult" class="sampleEntity">
       <result property="Id" column="FID"/>
@@ -33,11 +41,24 @@
     ============================================= 
     -->
   <statements>
+    <statement id="selectAllModel">
+      <![CDATA[
+      select * from p_sample
+      ]]>
+    </statement>
     <!--select-->
     <statement id="QueryByName" resultMap="sampleEntityResult" parameterClass="string">
       <![CDATA[
         select * from p_sample where fname = #Name#
       ]]>
+    </statement>
+    <!--dynamicSql-->
+    <statement id="QueryUsingDanamicSql" resultMap="sampleEntityResult" parameterClass="sampleEntity" extends="selectAllModel">
+      <dynamic prepend="where">
+        <isNotEmpty prepend="and" property="Name">
+          fname = #Name#
+        </isNotEmpty>
+      </dynamic>
     </statement>
     <!--insert-->
     <statement id="InsertSample" parameterClass ="sampleEntity">
@@ -65,6 +86,4 @@
       proc_samples.proc_sample
     </procedure>
   </statements>
-
-
 </sqlMap>

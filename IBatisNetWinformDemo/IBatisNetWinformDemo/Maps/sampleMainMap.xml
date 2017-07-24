@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<sqlMap namespace="Entity" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="sampleMainEntity" type="IBatisNetWinformDemo.Entities.SampleMainEntity, IBatisNetWinformDemo" />
+    <typeAlias alias="sampleTypeEntity" type="IBatisNetWinformDemo.Entities.SampleTypeEntity, IBatisNetWinformDemo" />
+    <typeAlias alias="sampleDetailEntity" type="IBatisNetWinformDemo.Entities.SampleDetailEntity, IBatisNetWinformDemo" />
+    <typeAlias alias="SampleTypeTypeHandler" type="IBatisNetWinformDemo.Entities.SampleTypeTypeHandlerCallBack, IBatisNetWinformDemo" />
+    <typeAlias alias="SampleSummaryEntity" type="IBatisNetWinformDemo.Entities.SampleSummaryEntity, IBatisNetWinformDemo" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="sampleMainEntityResult" class="sampleMainEntity">
+      <result property="Id" column="FID"/>
+      <result property="Remark" column="FREMARK"/>
+    </resultMap>
+    <resultMap id="sampleMainEntityExResult" class="sampleMainEntity">
+      <result property="Id" column="FID"/>
+      <result property="SampleType" column="FTYPENAME" typeHandler="SampleTypeTypeHandler"/>
+      <result property="Remark" column="FREMARK"/>
+    </resultMap>
+    <resultMap id="SampleSummaryResult" class="SampleSummaryEntity" groupBy="Id">
+      <result property="Id" column="FTYPEID"/>
+      <result property="Name" column="FTYPENAME"/>
+      <result property="SampleMainList" resultMapping="Entity.sampleMainEntityResult"/>
+    </resultMap>
+    <!--Composite Keys or Multiple Complex Parameters Properties-->
+    <resultMap id="sampleMainWithDetailEntityResult" class="sampleMainEntity">
+      <result property="Id" column="FID"/>
+      <result property="SampleType" column="FTYPENAME" typeHandler="SampleTypeTypeHandler"/>
+      <result property="Remark" column="FREMARK"/>
+      <result property="DetailList" column="Id=FID" select="QuerySampleDetail"/>
+    </resultMap>
+    <resultMap id="sampleDetailEntityResult" class="sampleDetailEntity">
+      <result property="Id" column="FID"/>
+      <result property="EntityId" column="FENTITY_ID"/>
+      <result property="Value" column="FVALUE"/>
+    </resultMap>
+  </resultMaps>
+
+  <!-- =============================================
+        MAPPED STATEMENTS 
+    ============================================= 
+    -->
+
+  <statements>
+    <statement id="QuerySampleMainAll" resultMap ="sampleMainEntityExResult">
+      <![CDATA[
+        select c.fname ftypeName, a.*
+        from mp.p_sample_main a, mp.p_sample_type c
+        where a.ftype_id = c.fid
+      ]]>
+    </statement>
+    <select id="DoSampleSummary" resultMap="SampleSummaryResult" groupBy="Id">
+      <![CDATA[
+        select c.fid ftypeId,c.fname ftypename,a.*
+        from mp.p_sample_main a, mp.p_sample_type c
+        where a.ftype_id = c.fid
+      ]]>
+    </select>
+    <select id="QuerySampleMainWithDetail" resultMap="sampleMainWithDetailEntityResult">
+      <![CDATA[
+        select * from mp.p_sample_main
+      ]]>
+    </select>
+    <select id="QuerySampleDetail" resultMap="sampleDetailEntityResult">
+      <![CDATA[
+        select * from mp.p_sample_detail 
+        where fid = #Id#
+      ]]>
+    </select>
+  </statements>
+</sqlMap>

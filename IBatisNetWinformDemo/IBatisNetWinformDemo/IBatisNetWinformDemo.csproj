@@ -64,7 +64,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Entities\public\BaseEntity.cs" />
+    <Compile Include="Entities\SampleDetailEntity.cs" />
+    <Compile Include="Entities\SampleMainEntity.cs" />
+    <Compile Include="Entities\SampleSummaryEntity.cs" />
+    <Compile Include="Entities\SampleTypeEntity.cs" />
     <Compile Include="Entities\SampleEntity.cs" />
+    <Compile Include="Entities\TypeHandlers\SampleTypeTypeHandlerCallBack.cs" />
+    <Compile Include="FormProblemSolutions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProblemSolutions.Designer.cs">
+      <DependentUpon>FormProblemSolutions.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormProblemSolutions.resx">
+      <DependentUpon>FormProblemSolutions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainTestForm.resx">
       <DependentUpon>MainTestForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +113,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Content Include="database.sql" />
+    <Content Include="Maps\sampleMainMap.xml">
+      <CustomToolNamespace>~/Maps/sampleMainMap.xml</CustomToolNamespace>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="providers.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

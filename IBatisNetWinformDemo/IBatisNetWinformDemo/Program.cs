@@ -16,7 +16,7 @@ namespace IBatisNetWinformDemo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainTestForm());
+            Application.Run(new FormProblemSolutions());
         }
     }
 }

@@ -23,20 +23,17 @@ namespace IBatisNetWinformDemo
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSearch.Text.Trim()))
-            {
-                MessageBox.Show("请输入内容！");
-                txtSearch.Focus();
-                return;
-            }
-            log4net.ILog log1 = log4net.LogManager.GetLogger(this.GetType());
-            log1.Debug("fdfd");
-            ILog log = LogManager.GetLogger(this.GetType());
-            log.Debug("查询");
-            log.Error("查询");
+            //if (string.IsNullOrEmpty(txtSearch.Text.Trim()))
+            //{
+            //    MessageBox.Show("请输入内容！");
+            //    txtSearch.Focus();
+            //    return;
+            //}
             ISqlMapper mapper = Mapper.Instance();//得到ISqlMapper实例
+            SampleEntity sample = new SampleEntity();
+            sample.Name = txtSearch.Text.Trim();
             //1.使用mapper.QueryForList查询数据
-            IList<SampleEntity> resultList = mapper.QueryForList<SampleEntity>("QueryByName", txtSearch.Text.Trim());
+            IList<SampleEntity> resultList = mapper.QueryForList<SampleEntity>("QueryUsingDanamicSql", sample);
             
             //2.使用存储过程查询数据
             //ISqlMapper mapper = Mapper.Instance();//得到ISqlMapper实例

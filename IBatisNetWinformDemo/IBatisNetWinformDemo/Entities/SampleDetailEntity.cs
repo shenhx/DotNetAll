@@ -7,13 +7,18 @@ using System.Threading.Tasks;
 namespace IBatisNetWinformDemo.Entities
 {
     /// <summary>
-    /// Entity
+    /// SampleDetailEntity实体
     /// </summary>
-    public class BaseEntity<T>
+    public class SampleDetailEntity : BaseEntity<long>
     {
         /// <summary>
-        /// 主键字段
+        /// 主键Id
         /// </summary>
-        public T Id { get; set; }
+        public long EntityId { get; set; }
+
+        /// <summary>
+        /// 值
+        /// </summary>
+        public string Value { get; set; }
     }
 }

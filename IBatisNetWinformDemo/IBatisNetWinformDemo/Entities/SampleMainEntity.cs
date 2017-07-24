@@ -7,19 +7,23 @@ using System.Threading.Tasks;
 namespace IBatisNetWinformDemo.Entities
 {
     /// <summary>
-    /// Sample实体
+    /// SampleMainEntity实体
     /// </summary>
-    public class SampleEntity : BaseEntity<string>
+    public class SampleMainEntity : BaseEntity<long>
     {
         /// <summary>
-        /// 名称
+        /// 类型
         /// </summary>
-        public string Name { get; set; }
+        public string SampleType { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>
         public string Remark { get; set; }
 
+        /// <summary>
+        /// 明细表集合
+        /// </summary>
+        public List<SampleDetailEntity> DetailList { get; set; }
     }
 }
