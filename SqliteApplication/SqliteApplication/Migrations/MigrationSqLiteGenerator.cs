@@ -23,7 +23,6 @@ namespace SqliteApplication.Migrations
         private const int pintDefaultPrecisaoNumerica = 10;
         private const byte pbytDefaultPrecisaoTempo = 7;
         private const byte pintDefaultEscala = 0;
-        //private const string pstrNomeTabelaMigration = "__MigrationHistory"; 
 
         #endregion
 

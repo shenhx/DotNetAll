@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfApplicationDemo.VirtualizationContainer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:src="clr-namespace:WpfApplicationDemo"
+        Title="VirtualizationContainer" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+
+            <StackPanel.Resources>
+                <src:LotsOfItems x:Key="data"/>
+            </StackPanel.Resources>
+
+            <ListBox Height="150" ItemsSource="{StaticResource data}" 
+             VirtualizingStackPanel.VirtualizationMode="Recycling" ScrollViewer.IsDeferredScrollingEnabled="True"  />
+
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfApplicationDemo.Thread_BackgroundWorker_Demo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cm="clr-namespace:System.ComponentModel;assembly=System"
+        Title="Thread_BackgroundWorker_Demo" Height="300" Width="300">
+    <Window.Resources>
+        <cm:BackgroundWorker x:Key="backgroundWorker"
+                             WorkerReportsProgress="True"
+                             WorkerSupportsCancellation="True"
+                             DoWork="BackgroundWorker_DoWork"
+                             ProgressChanged="BackgroundWorker_ProgressChanged"
+                             RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted"></cm:BackgroundWorker>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="from:"></Label>
+                <TextBox Width="200px" x:Name="txtFrom"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="to:     "></Label>
+                <TextBox Width="200px" x:Name="txtTo"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="ok" Width="50" x:Name="cmdFind" Click="cmdFind_Click"/>
+                <Button Content="cancel" Width="50" x:Name="cmdCancel" Click="cmdCancel_Click"/>
+            </StackPanel>
+            <TextBlock Height="160" x:Name="txtResult"></TextBlock>
+            <ProgressBar x:Name="progressbar"></ProgressBar>
+        </StackPanel>
+    </Grid>
+</Window>
