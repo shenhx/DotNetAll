@@ -16,22 +16,22 @@ namespace WindowsFormsApplication1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form2());
-            List<string> list = new List<string>();
-            list.Add("nema");
-            list.Add("nema1");
-            list.Add("nema2");
-            list.Add("nema3");
-            //第一种方式
-            StringBuilder sb = new StringBuilder();
-            list.ForEach(p => 
-            {
-                if (sb.Length > 0) sb.Append(",");
-                sb.Append(p);
-            });
-            Console.WriteLine(sb.ToString());
-            //第二种方式
-            Console.WriteLine(string.Join(",",list.ToArray()));
+            Application.Run(new Form2());
+            //List<string> list = new List<string>();
+            //list.Add("nema");
+            //list.Add("nema1");
+            //list.Add("nema2");
+            //list.Add("nema3");
+            ////第一种方式
+            //StringBuilder sb = new StringBuilder();
+            //list.ForEach(p => 
+            //{
+            //    if (sb.Length > 0) sb.Append(",");
+            //    sb.Append(p);
+            //});
+            //Console.WriteLine(sb.ToString());
+            ////第二种方式
+            //Console.WriteLine(string.Join(",",list.ToArray()));
         }
     }
 }

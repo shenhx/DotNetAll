@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp_OrderLabel_Print", "WpfApp_OrderLabel_Print\WpfApp_OrderLabel_Print.csproj", "{86CC6405-6251-41FB-B91D-D6DA5674CA97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86CC6405-6251-41FB-B91D-D6DA5674CA97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86CC6405-6251-41FB-B91D-D6DA5674CA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86CC6405-6251-41FB-B91D-D6DA5674CA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86CC6405-6251-41FB-B91D-D6DA5674CA97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A24DC49-1220-4E4C-A8D1-3B5C9E9C33A9}
+	EndGlobalSection
+EndGlobal

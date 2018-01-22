@@ -1,0 +1,30 @@
+﻿<Window x:Class="Wpf_Book_Samples_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_Book_Samples_1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed"></CommandBinding>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sample.ResourcesTest;component/MyResources.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <DockPanel>
+            <ToolBar DockPanel.Dock="Top" Height="25">
+                <Button Content="绑定" Command="ApplicationCommands.New" CommandParameter="Binding" CommandTarget="{Binding RelativeSource={RelativeSource Mode=Self}}"></Button>
+                <Button Content="命令" Command="ApplicationCommands.New" CommandParameter="Command" CommandTarget="{Binding RelativeSource={RelativeSource Mode=Self}}"></Button>
+            </ToolBar>
+            <StackPanel DockPanel.Dock="Left">
+                <TextBlock Text="hello,my dear" FontFamily="{Binding Source={StaticResource MyFontFamily}}"></TextBlock>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>
