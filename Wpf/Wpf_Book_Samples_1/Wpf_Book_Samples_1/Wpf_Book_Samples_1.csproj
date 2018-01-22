@@ -55,17 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Window_Binding.xaml.cs">
-      <DependentUpon>Window_Binding.xaml</DependentUpon>
+    <Compile Include="Window_ControlTemplate.xaml.cs">
+      <DependentUpon>Window_ControlTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window_Command.xaml.cs">
-      <DependentUpon>Window_Command.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window_Path.xaml.cs">
-      <DependentUpon>Window_Path.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window_Style.xaml.cs">
-      <DependentUpon>Window_Style.xaml</DependentUpon>
+    <Compile Include="Window_DeepInAnimation.xaml.cs">
+      <DependentUpon>Window_DeepInAnimation.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -79,19 +73,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Window_Binding.xaml">
+    <Page Include="Window_ControlTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Window_Command.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window_Path.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window_Style.xaml">
+    <Page Include="Window_DeepInAnimation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,28 +105,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DependencyObject\Sample.DependencyObjectTest.csproj">
-      <Project>{83E1E640-2141-4563-A490-31A7D43DBEC0}</Project>
-      <Name>Sample.DependencyObjectTest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sample.BindingTest\Sample.BindingTest.csproj">
-      <Project>{6331a6ea-fb26-4d47-b1c3-c4b7717fd43d}</Project>
-      <Name>Sample.BindingTest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sample.CommandTest\Sample.CommandTest.csproj">
-      <Project>{1639ebe3-d638-4280-817b-712051c074fe}</Project>
-      <Name>Sample.CommandTest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sample.ResourcesTest\Sample.ResourcesTest.csproj">
-      <Project>{1b097319-2015-4505-860e-f4b329987534}</Project>
-      <Name>Sample.ResourcesTest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sample.RouteEventTest2\Sample.RouteEventTest.csproj">
-      <Project>{EFAA0567-B3FE-4F5D-A94F-39F854375E8C}</Project>
-      <Name>Sample.RouteEventTest</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

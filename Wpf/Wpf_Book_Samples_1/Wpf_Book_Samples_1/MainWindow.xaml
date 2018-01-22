@@ -12,18 +12,18 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Sample.ResourcesTest;component/MyResources.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <DockPanel>
             <ToolBar DockPanel.Dock="Top" Height="25">
-                <Button Content="绑定" Command="ApplicationCommands.New" CommandParameter="Binding" CommandTarget="{Binding RelativeSource={RelativeSource Mode=Self}}"></Button>
-                <Button Content="命令" Command="ApplicationCommands.New" CommandParameter="Command" CommandTarget="{Binding RelativeSource={RelativeSource Mode=Self}}"></Button>
+                <Button Content="绑定" Command="ApplicationCommands.New" CommandParameter="Binding"></Button>
+                <Button Content="命令" Command="ApplicationCommands.New" CommandParameter="Command"></Button> 
+                <Button Content="高级动画" Command="ApplicationCommands.New" CommandParameter="DeepInAnimation"></Button>
+                <Button Content="控件模板" Command="ApplicationCommands.New" CommandParameter="ControlTemplate"></Button>
             </ToolBar>
             <StackPanel DockPanel.Dock="Left">
-                <TextBlock Text="hello,my dear" FontFamily="{Binding Source={StaticResource MyFontFamily}}"></TextBlock>
             </StackPanel>
         </DockPanel>
     </Grid>
