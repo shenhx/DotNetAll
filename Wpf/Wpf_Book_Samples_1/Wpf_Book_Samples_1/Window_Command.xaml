@@ -1,0 +1,24 @@
+﻿<Window x:Class="Wpf_Book_Samples_1.Window_Command"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_Book_Samples_1"
+        xmlns:localCommand ="clr-namespace:Sample.CommandTest;assembly=Sample.CommandTest"
+        mc:Ignorable="d"
+        Title="Window_Command" Height="300" Width="300">
+    <Window.CommandBindings>
+        <CommandBinding x:Name="OrderSplit" Command="localCommand:MyCommands.OrderSplit" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed"></CommandBinding>
+    </Window.CommandBindings>
+    <Grid>
+        <DockPanel>
+            <ToolBar DockPanel.Dock="Top" Height="25">
+                <Button Command="Cut" CommandTarget="{Binding ElementName=txtContent}">Cut</Button>
+                <Button Command="Copy" CommandTarget="{Binding ElementName=txtContent}">Copy</Button>
+                <Button Command="Paste" CommandTarget="{Binding ElementName=txtContent}">Paste</Button>
+                <Button Command="localCommand:MyCommands.OrderSplit">医嘱拆分</Button>
+            </ToolBar>
+            <TextBox DockPanel.Dock="Right" x:Name="txtContent"></TextBox>
+        </DockPanel>
+    </Grid>
+</Window>

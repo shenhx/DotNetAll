@@ -47,7 +47,7 @@ namespace WpfApp_OrderLabel_Print
                 {
                     new AdviceInfo()
                     {
-                        ItemName = "生理盐水静脉注errrrrsdsds射你好热热热热好红红火火液",
+                        ItemName = "一二三四五六七八九十零一二三四五六七八九十零",
                         Dosage = "100ml"
                     },
                     new AdviceInfo()

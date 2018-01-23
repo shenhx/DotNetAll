@@ -31,8 +31,8 @@ namespace WpfApp_OrderLabel_Print
         
         private void Btn_Print_Click(object sender, RoutedEventArgs e)
         {
-            //Print("1", "Microsoft XPS Document Writer");
-            Print("1", "ZDesigner GK888t(EPL)");
+            Print("1", "Microsoft XPS Document Writer");
+            //Print("1", "ZDesigner GK888t(EPL)");
         }
 
         private void Print(string pageDirection,string printerName)
@@ -110,7 +110,7 @@ namespace WpfApp_OrderLabel_Print
             Style DosageTextBlockStyle = (Style)orderLabelPrintPage.TryFindResource("DosageTextBlockStyle");
             //其他资源
             int iMaxItemWordCount = (int)orderLabelPrintPage.TryFindResource("MaxItemWordCount");
-            int iMaxDosageWordCount = (int)orderLabelPrintPage.TryFindResource("MaxQuantityWordCount");
+            int iMaxDosageWordCount = (int)orderLabelPrintPage.TryFindResource("MaxDosageWordCount");
 
             TextBlock tbFreq = (TextBlock)orderLabelPrintPage.FindName("TbFreq");
             TextBlock tbSeq = (TextBlock)orderLabelPrintPage.FindName("TbSeq");
@@ -228,12 +228,12 @@ namespace WpfApp_OrderLabel_Print
                 {
                     break;
                 }
-                
             }
-            if(itemNameLengthRecorder <= maxItemWordCount && itemNameIndex <= maxItemWordCount)
+            //这里存在两种情况：一种是全部英文字母占多，实际不用换行。  一种是需要换行的。
+            if (advice.ItemName.Length <= itemNameIndex + 2)
             {
                 //不需要换行
-                tuple = new Tuple<bool, string, string, string, string>(false,advice.ItemName,"",advice.Dosage,"");
+                tuple = new Tuple<bool, string, string, string, string>(false, advice.ItemName, "", advice.Dosage, "");
             }
             else
             {
@@ -254,27 +254,27 @@ namespace WpfApp_OrderLabel_Print
                             dosageLengthRecorder += 0.5;
                         }
                         dosageIndex++;
-                        if (dosageLengthRecorder >= maxDosageWordCount)
+                        if (dosageLengthRecorder >= maxDosageWordCount - 0.5)
                         {
                             break;
                         }
-                        
+
                     }
-                    if (dosageLengthRecorder <= maxDosageWordCount && dosageIndex <= maxDosageWordCount)
+                    if (advice.Dosage.Length <= dosageIndex + 1)
                     {
                         dosage1 = advice.Dosage;
                     }
                     else
                     {
-                        dosage1 = advice.Dosage.Substring(0, dosageIndex);
-                        dosage2 = advice.Dosage.Substring(dosageIndex);
+                        dosage1 = advice.Dosage.Substring(0, dosageIndex+1);
+                        dosage2 = advice.Dosage.Substring(dosageIndex+1);
                     }
                 }
                 else
                 {
                     dosage1 = advice.Dosage;
                 }
-                tuple = new Tuple<bool, string, string, string, string>(true, advice.ItemName.Substring(0, itemNameIndex), advice.ItemName.Substring(itemNameIndex), dosage1, dosage2);
+                tuple = new Tuple<bool, string, string, string, string>(true, advice.ItemName.Substring(0, itemNameIndex+1), advice.ItemName.Substring(itemNameIndex+1), dosage1, dosage2);
             }
             return tuple;
         }

@@ -1,0 +1,20 @@
+﻿<Window x:Class="Wpf_Book_Samples_1.Window_Path"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_Book_Samples_1"
+        mc:Ignorable="d"
+        Title="Window_Path" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Path Fill="Yellow" Stroke="Blue">
+            <Path.Data>
+                <RectangleGeometry Rect="0,0 100,50"></RectangleGeometry>
+            </Path.Data>
+        </Path>
+    </Grid>
+</Window>

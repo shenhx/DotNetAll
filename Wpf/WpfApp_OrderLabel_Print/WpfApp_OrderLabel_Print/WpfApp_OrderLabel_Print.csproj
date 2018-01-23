@@ -76,6 +76,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OrderLabelPage - 复制.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="OrderLabelPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

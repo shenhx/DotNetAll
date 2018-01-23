@@ -38,10 +38,14 @@ namespace Wpf_Book_Samples_1
             {
                 case "Binding":
                     {
+                        Window_Binding binding = new Window_Binding();
+                        binding.ShowDialog();
                         break;
                     }
                 case "Command":
                     {
+                        Window_Command command = new Window_Command();
+                        command.ShowDialog();
                         break;
                     }
                 case "DeepInAnimation":
