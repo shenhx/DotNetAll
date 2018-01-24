@@ -46,10 +46,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DpiHelper.cs" />
+    <Compile Include="Reflecting\IReflectingTest.cs" />
     <Compile Include="ObjectMapper\ObjectMapper.cs" />
     <Compile Include="ObjectMapper\ObjectMapperByDictCache.cs" />
     <Compile Include="ObjectMapper\ObjectMapperGenericType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflecting\ReflectingTest.cs" />
+    <Compile Include="Reflecting\ReflectingTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
