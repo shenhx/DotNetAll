@@ -1,0 +1,40 @@
+﻿<Project>
+
+  <Import Project=".\version.props" />
+
+  <PropertyGroup>
+    <RootNamespace>GodSharp.Socket</RootNamespace>
+    <Company>GodSharp</Company>
+    <Authors>seayxu</Authors>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/godsharp/GodSharp.Logging.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/godsharp/GodSharp.Logging</PackageProjectUrl>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/26563296</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/godsharp/GodSharp.Logging/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright © GodSharp 2017</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <TargetFrameworks Condition="'$(LibraryFrameworks)'==''">net35;net40;net45;net46;net47;netstandard2.0;</TargetFrameworks>
+    <TargetFrameworks Condition="'$(LibraryFrameworks)'!=''">$(LibraryFrameworks)</TargetFrameworks>
+    <OutputPath>$(SolutionDir)\output\$(AssemblyName)</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net35'">
+    <DefineConstants>NFX;NET35;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
+    <DefineConstants>NFX;NET40;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
+    <DefineConstants>NFX;NET45;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
+    <DefineConstants>NFX;NET46;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net47'">
+    <DefineConstants>NFX;NET47;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <DefineConstants>CFX;NETSTANDARD2_0;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+</Project>

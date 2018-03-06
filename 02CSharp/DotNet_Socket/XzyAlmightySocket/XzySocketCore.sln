@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XzySocketCore", "XzySocketCore\XzySocketCore.csproj", "{177110B9-1B4E-49CA-B82B-27D82279CB5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{6729A69F-5688-4F7F-85AA-FF2694764D59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XzyClient", "XzyClient", "{67868682-547A-40FF-9024-5DD2A2AC6829}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XzyServer", "XzyServer", "{B8F2EBFA-C55C-4DFE-82D5-27968C42F173}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XzyWeb", "XzyWeb", "{42C64D73-E162-473E-A902-FFF3F3587BCC}"
+	ProjectSection(SolutionItems) = preProject
+		Example\XzyWeb\index.html = Example\XzyWeb\index.html
+		Example\XzyWeb\jquery-2.2.4.min.js = Example\XzyWeb\jquery-2.2.4.min.js
+		Example\XzyWeb\xzySocketWeb.js = Example\XzyWeb\xzySocketWeb.js
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XzyServer", "Example\XzyServer\XzyServer.csproj", "{EF7B40EB-8ECF-4F2E-99F4-6F4B8D29320E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XzyClient", "Example\XzyClient\XzyClient.csproj", "{73E4310C-1D0E-4670-9733-2D45588A1345}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{177110B9-1B4E-49CA-B82B-27D82279CB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{177110B9-1B4E-49CA-B82B-27D82279CB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{177110B9-1B4E-49CA-B82B-27D82279CB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{177110B9-1B4E-49CA-B82B-27D82279CB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF7B40EB-8ECF-4F2E-99F4-6F4B8D29320E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF7B40EB-8ECF-4F2E-99F4-6F4B8D29320E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF7B40EB-8ECF-4F2E-99F4-6F4B8D29320E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF7B40EB-8ECF-4F2E-99F4-6F4B8D29320E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73E4310C-1D0E-4670-9733-2D45588A1345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73E4310C-1D0E-4670-9733-2D45588A1345}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73E4310C-1D0E-4670-9733-2D45588A1345}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73E4310C-1D0E-4670-9733-2D45588A1345}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{67868682-547A-40FF-9024-5DD2A2AC6829} = {6729A69F-5688-4F7F-85AA-FF2694764D59}
+		{B8F2EBFA-C55C-4DFE-82D5-27968C42F173} = {6729A69F-5688-4F7F-85AA-FF2694764D59}
+		{42C64D73-E162-473E-A902-FFF3F3587BCC} = {6729A69F-5688-4F7F-85AA-FF2694764D59}
+		{EF7B40EB-8ECF-4F2E-99F4-6F4B8D29320E} = {B8F2EBFA-C55C-4DFE-82D5-27968C42F173}
+		{73E4310C-1D0E-4670-9733-2D45588A1345} = {67868682-547A-40FF-9024-5DD2A2AC6829}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8AA16724-883A-4D55-A758-E56CF94C9868}
+	EndGlobalSection
+EndGlobal
