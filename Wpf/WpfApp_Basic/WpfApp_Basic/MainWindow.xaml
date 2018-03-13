@@ -7,13 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="353*"/>
-            <ColumnDefinition Width="439*"/>
-        </Grid.ColumnDefinitions>
-        <TabControl BorderThickness="1" Grid.ColumnSpan="2">
+        <TabControl BorderThickness="0">
             <TabItem Header="在院">
-                <Grid>
+                <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.05*"></RowDefinition>
                         <RowDefinition Height="0.95*"></RowDefinition>
@@ -25,6 +21,8 @@
                             <ColumnDefinition Width="auto"></ColumnDefinition>
                             <ColumnDefinition Width="auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
+                        <!--画线可以利用border进行画单行线-->
+                        <Border Height="1" Grid.ColumnSpan="4" Background="#c0c0c0" Padding="10"  Margin="0,0,0,18"></Border>
                         <StackPanel Orientation="Horizontal" TextBlock.Foreground="Blue" x:Name="spHello1" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
                             <TextBlock Text="你好"></TextBlock>
                             <TextBlock Text="10"></TextBlock>
