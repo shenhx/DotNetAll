@@ -65,7 +65,7 @@ namespace WpfApp_Basic
                     }
                     else
                     {
-                        spObject.SetBinding(TextBlock.ForegroundProperty, new Binding() { TargetNullValue = new SolidColorBrush(Color.FromRgb(0, 0, 0)) });
+                        spObject.SetBinding(TextBlock.ForegroundProperty, new Binding(){ TargetNullValue = new SolidColorBrush(Color.FromRgb(0, 0, 0)) });
                     }
                 }
                 else
