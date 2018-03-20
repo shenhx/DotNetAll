@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp_Basic"
              mc:Ignorable="d" 
-             d:DesignHeight="25" d:DesignWidth="150">
+             d:DesignHeight="25" d:DesignWidth="200">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -78,7 +78,7 @@
             Margin="5,5,0,0" 
             Name="Part_DateTimePickerTextBlock"             
             VerticalAlignment="Top" 
-            Text="2017/07/31 18:19:20"
+            Text="{Binding Path=DateTimeFormatValue}"
             Width="{Binding}" />
         
         <!--日期时间控件-->

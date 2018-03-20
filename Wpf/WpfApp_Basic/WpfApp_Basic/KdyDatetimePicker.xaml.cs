@@ -24,28 +24,19 @@ namespace WpfApp_Basic
         public KdyDatetimePicker()
         {
             InitializeComponent();
-            Init(DateTime.Now);
+            Init();
+            this.DataContext = this;
         }
 
-        private void Init(DateTime? dtValue)
+        private void Init()
         {
-            if (dtValue == null)
-                dtValue = DateTime.Now;
-            SelectDateTime = dtValue.Value;
-            calendar.SelectedDate = SelectDateTime;
-            TimeHour.Text = SelectDateTime.Hour.ToString("00");
-            TimeMinutes.Text = SelectDateTime.Minute.ToString("00");
-            TimeSeconds.Text = SelectDateTime.Second.ToString("00");
+            if (Value == null)
+                Value = DateTime.Now;
+            calendar.SelectedDate = Value;
+            TimeHour.Text = Value.Hour.ToString("00");
+            TimeMinutes.Text = Value.Minute.ToString("00");
+            TimeSeconds.Text = Value.Second.ToString("00");
         }
-
-        #region 属性
-
-        /// <summary>
-        /// 日期时间
-        /// </summary>
-        public DateTime SelectDateTime { get; set; }
-
-        #endregion
 
         #region 依赖属性
 
@@ -60,6 +51,7 @@ namespace WpfApp_Basic
             set { SetValue(DateTimeFormatProperty, value); }
             get { return (string)GetValue(DateTimeFormatProperty); }
         }
+
         private static void OnFormatChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
             if (!"yyyy-MM-dd HH:mm:ss".Equals(args.NewValue) && !"yyyy/MM/dd HH:mm:ss".Equals(args.NewValue))
@@ -69,19 +61,59 @@ namespace WpfApp_Basic
         }
         #endregion
 
+        #region 时间控件的值
+
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(DateTime?), typeof(KdyDatetimePicker),
+            new PropertyMetadata(DateTime.Now, (s, e) =>
+            {
+                //其他逻辑
+                DateTime dtNewValue;
+                if(e.NewValue != null)
+                {
+                    DateTime.TryParse(e.NewValue.ToString(), out dtNewValue);
+                    if(dtNewValue == null)
+                    {
+                        throw new Exception("日期设置不对，请检查！");
+                    }
+                }
+            }));
+
+        public string DateTimeFormatValue
+        {
+            get { return Value.ToString(DateTimeFormat); }
+        }
+
+
+        /// <summary>
+        /// 设置或者获取日期时间的值
+        /// </summary>
+        public DateTime Value
+        {
+            set
+            {
+                SetValue(ValueProperty, value);
+            }
+            get
+            {
+                return (DateTime)GetValue(ValueProperty);
+            }
+        }
+
+        #endregion
+
         #endregion
 
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
             popChioce.IsOpen = true;
-            Init(SelectDateTime);
+            Init();
         }
 
         private void TimeOk_Click(object sender, RoutedEventArgs e)
         {
             string dateTimeStr = string.Format("{0} {1}:{2}:{3}", calendar.SelectedDate.Value.ToString("yyyy-MM-dd"), TimeHour.Text, TimeMinutes.Text, TimeSeconds.Text);
-            SelectDateTime = Convert.ToDateTime(dateTimeStr);
-            Part_DateTimePickerTextBlock.Text = SelectDateTime.ToString(DateTimeFormat);
+            Value = Convert.ToDateTime(dateTimeStr);
+            Part_DateTimePickerTextBlock.Text = Value.ToString(DateTimeFormat);
             popChioce.IsOpen = false;
         }
     }
