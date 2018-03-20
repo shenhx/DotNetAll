@@ -59,6 +59,9 @@
     <Compile Include="IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="KdyTextBox.xaml.cs">
+      <DependentUpon>KdyTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TDateTimeView.xaml.cs">
       <DependentUpon>TDateTimeView.xaml</DependentUpon>
     </Compile>
@@ -74,11 +77,18 @@
     <Compile Include="Window_TabControl.xaml.cs">
       <DependentUpon>Window_TabControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window_TextBox.xaml.cs">
+      <DependentUpon>Window_TextBox.xaml</DependentUpon>
+    </Compile>
     <Page Include="DateTimePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="IconButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KdyTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -111,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Window_TabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_TextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
