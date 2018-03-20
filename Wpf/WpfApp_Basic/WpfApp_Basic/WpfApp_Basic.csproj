@@ -74,6 +74,9 @@
     <Compile Include="TMinSexView.xaml.cs">
       <DependentUpon>TMinSexView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl_TextBox.xaml.cs">
+      <DependentUpon>UserControl_TextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window_DateTimePicker.xaml.cs">
       <DependentUpon>Window_DateTimePicker.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TMinSexView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl_TextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
