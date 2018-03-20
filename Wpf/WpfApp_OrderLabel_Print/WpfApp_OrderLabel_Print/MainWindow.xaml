@@ -6,7 +6,26 @@
         xmlns:local="clr-namespace:WpfApp_OrderLabel_Print"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WpfApp_OrderLabel_Print;component/ControlStyles.xaml"/>
+                <ResourceDictionary Source="/WpfApp_OrderLabel_Print;component/Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
-        <Button Height="25" Width="200" Content="打印" Click="Btn_Print_Click"></Button>
+        <StackPanel Orientation="Vertical">
+            <Button Height="25" Width="200" Content="打印" Click="Btn_Print_Click"></Button>
+            <TextBlock></TextBlock>
+            <TextBlock></TextBlock>
+            <TextBlock></TextBlock>
+            <ComboBox Height="25" Width="200" IsReadOnly="True"  Style="{StaticResource NonBorderComboBoxStyle}">
+                <ComboBoxItem Content="特级护理 10" IsSelected="True"></ComboBoxItem>
+                <ComboBoxItem Content="一级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="二级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </Window>

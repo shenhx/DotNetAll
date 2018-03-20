@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:WpfApp_Basic"
         mc:Ignorable="d"
         Title="Window_DateTimePicker" Height="450" Width="800">
+    <Window.Resources>
+        
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -14,8 +17,8 @@
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <DatePicker Height="25" Width="200" SelectedDateFormat="Long"></DatePicker>
-
-        <local:DateTimePicker Height="25" Width="200" Grid.Row="2" DateTimeFormat="yyyy/MM/dd hh:mm:ss" Margin="0,20"></local:DateTimePicker>
+        <local:DateTimePicker Height="25" Width="200" Grid.Row="1" DateTimeFormat="yyyy/MM/dd hh:mm:ss" Margin="0,20"></local:DateTimePicker>
+        <local:KdyDatetimePicker Height="25" Width="200" Grid.Row="2" DateTimeFormat="yyyy/MM/dd HH:mm:ss" Margin="0,20"></local:KdyDatetimePicker>
     </Grid>
 </Window>
     

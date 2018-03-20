@@ -207,13 +207,13 @@
                               Margin="12,2,12,2"
                               RecognizesAccessKey="True" />
                             </Border>
-                            <Border Height="4" x:Name="Part_HighLightControl" VerticalAlignment="Bottom"></Border>
+                            <!--<Border Height="4" x:Name="Part_HighLightControl" VerticalAlignment="Bottom"></Border>-->
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Panel.ZIndex" Value="100" />
                                 <Setter Property="Foreground" Value="Red"></Setter>
-                                <Setter TargetName="Part_HighLightControl" Property="Background" Value="Yellow"></Setter>
+                                <!--<Setter TargetName="Border" Property="BorderThickness" Value="0,0,0,5"></Setter>-->
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -223,7 +223,11 @@
     </Window.Resources>
     <Grid>
         <TabControl>
-            <TabItem Header="你好1"></TabItem>
+            <TabItem Header="你好1">
+                <Grid TextBlock.Foreground="Black">
+                    <TextBlock Text="hhhh"></TextBlock>
+                </Grid>
+            </TabItem>
             <TabItem Header="你好2"></TabItem>
         </TabControl>
     </Grid>

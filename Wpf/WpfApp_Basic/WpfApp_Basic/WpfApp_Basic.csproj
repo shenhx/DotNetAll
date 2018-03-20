@@ -59,8 +59,13 @@
     <Compile Include="IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="KdyTextBox.xaml.cs">
       <DependentUpon>KdyTextBox.xaml</DependentUpon>
+=======
+    <Compile Include="KdyDatetimePicker.xaml.cs">
+      <DependentUpon>KdyDatetimePicker.xaml</DependentUpon>
+>>>>>>> 558a25b09387dda0ae2f2e3f285e226343b68f36
     </Compile>
     <Compile Include="TDateTimeView.xaml.cs">
       <DependentUpon>TDateTimeView.xaml</DependentUpon>
@@ -77,9 +82,16 @@
     <Compile Include="Window_TabControl.xaml.cs">
       <DependentUpon>Window_TabControl.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Window_TextBox.xaml.cs">
       <DependentUpon>Window_TextBox.xaml</DependentUpon>
     </Compile>
+=======
+    <Page Include="ControlStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+>>>>>>> 558a25b09387dda0ae2f2e3f285e226343b68f36
     <Page Include="DateTimePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -88,7 +100,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
     <Page Include="KdyTextBox.xaml">
+=======
+    <Page Include="KdyDatetimePicker.xaml">
+>>>>>>> 558a25b09387dda0ae2f2e3f285e226343b68f36
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
