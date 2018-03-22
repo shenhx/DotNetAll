@@ -22,5 +22,10 @@ namespace WpfApp_Basic
         {
             InitializeComponent();
         }
+
+        private void KdyTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show(txtHello.Text+"---"+txtHello);
+        }
     }
 }

@@ -9,9 +9,24 @@
     <UserControl.Resources>
         <!--获得焦点后边框颜色-->
         <SolidColorBrush x:Key="FocusedBorderBrush" Color="Black"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Image Source="/WpfApp_Basic;component/close.png" />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderThickness" Value="0"></Setter>
+                                <Setter Property="Background" Value="Transparent"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
-    <Grid>
-        <TextBox TextAlignment="{Binding TextAlignment}">
+    <Grid x:Name="Bd">
+        <TextBox x:Name="txtControl" TextAlignment="{Binding TextAlignment}" VerticalContentAlignment="Center" >
             <TextBox.Resources>
                     <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
                         <VisualBrush.Visual>

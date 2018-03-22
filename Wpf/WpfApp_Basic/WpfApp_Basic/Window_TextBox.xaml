@@ -28,6 +28,6 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <local:KdyTextBox Width="200" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" PlaceHolder="hello,who you are ?"  Height="25" Margin="50,50,0,0" />
+        <local:KdyTextBox Width="200" x:Name="txtHello" HorizontalAlignment="Center" MouseDoubleClick="KdyTextBox_MouseDoubleClick" TextAlignment="Left" VerticalAlignment="Center" PlaceHolder="hello,who you are ?"  Height="25" Margin="50,50,0,0" />
     </Grid>
 </Window>

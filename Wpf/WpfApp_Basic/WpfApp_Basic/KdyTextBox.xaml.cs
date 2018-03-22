@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace WpfApp_Basic
     /// KdyTextBox.xaml 的交互逻辑
     /// </summary>
     [ToolboxBitmap(typeof(KdyTextBox))]
-    public partial class KdyTextBox : UserControl
+    public partial class KdyTextBox : UserControl, INotifyPropertyChanged
     {
         public KdyTextBox()
         {
@@ -29,17 +30,40 @@ namespace WpfApp_Basic
         static KdyTextBox()
         {
             DependencyProperty.RegisterAttached("TextAlignment", typeof(TextAlignment),typeof(KdyTextBox));
+            //DependencyProperty.RegisterAttached("Height", typeof(double),typeof(KdyTextBox));
+            //DependencyProperty.RegisterAttached("Width", typeof(double),typeof(KdyTextBox));
         }
 
         public TextAlignment TextAlignment { get; set; }
+        //public double Height { get; set; }
+        //public double Width { get; set; }
 
-        public DependencyProperty PlaceHolderProperty = DependencyProperty.Register("PlaceHolder", typeof(string), typeof(KdyTextBox), new PropertyMetadata("请输入内容..."));
+        public static readonly DependencyProperty PlaceHolderProperty = DependencyProperty.Register("PlaceHolder", typeof(string), typeof(KdyTextBox), new PropertyMetadata("请输入内容..."));
         public string PlaceHolder
         {
             get { return (string)GetValue(PlaceHolderProperty); }
             set { SetValue(PlaceHolderProperty, value); }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName = "")
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        
+        public string Text
+        {
+            get { return txtControl.Text; }
+        }
+
+        public override string ToString()
+        {
+            return Text;
+        }
     }
 
     public class TextBoxHelper
