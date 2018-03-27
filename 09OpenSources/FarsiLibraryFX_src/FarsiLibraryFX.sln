@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{20721905-A87B-4876-B98F-E774785C7C5E}"
+	ProjectSection(SolutionItems) = preProject
+		SolutionItems\CommonAssemblyInfo.cs = SolutionItems\CommonAssemblyInfo.cs
+		SolutionItems\Readme.txt = SolutionItems\Readme.txt
+		SolutionItems\Version 1.6 Release.txt = SolutionItems\Version 1.6 Release.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.FX.Utils", "FarsiLibrary.FX.Utils\FarsiLibrary.FX.Utils.csproj", "{A4D4D2E2-762A-4C74-9285-5FFD030E83E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.FX.Win", "FarsiLibrary.FX.Win\FarsiLibrary.FX.Win.csproj", "{01D673DE-5CD4-491D-B4AF-563360C1BC9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarsiLibrary.FX.Test", "FarsiLibrary.FX.Test\FarsiLibrary.FX.Test.csproj", "{FA3BBB62-A402-4838-84E7-A115A55C31CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4D4D2E2-762A-4C74-9285-5FFD030E83E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4D4D2E2-762A-4C74-9285-5FFD030E83E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4D4D2E2-762A-4C74-9285-5FFD030E83E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4D4D2E2-762A-4C74-9285-5FFD030E83E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01D673DE-5CD4-491D-B4AF-563360C1BC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D673DE-5CD4-491D-B4AF-563360C1BC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01D673DE-5CD4-491D-B4AF-563360C1BC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01D673DE-5CD4-491D-B4AF-563360C1BC9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA3BBB62-A402-4838-84E7-A115A55C31CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA3BBB62-A402-4838-84E7-A115A55C31CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA3BBB62-A402-4838-84E7-A115A55C31CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA3BBB62-A402-4838-84E7-A115A55C31CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA47595E-7687-4972-83B7-1C288A3B6500}
+	EndGlobalSection
+EndGlobal

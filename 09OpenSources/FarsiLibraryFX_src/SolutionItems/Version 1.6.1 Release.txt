@@ -1,0 +1,13 @@
+﻿Second Release :
+
+Fixed :
+1- Issue of converting the WeekOfDay to integer value, which resulted wrong week-day in Gregorian calendar.
+
+First Release :
+
+Contains MonthView and DatePicker controls with basic functionality.
+
+Known Issues :
+1- Some problem when setting applicaiton's Culture to Arabic variations.
+2- MinDate and MaxDate is partially implemented.
+3- MultiSelection is only available on the UI and should be implemented completely.

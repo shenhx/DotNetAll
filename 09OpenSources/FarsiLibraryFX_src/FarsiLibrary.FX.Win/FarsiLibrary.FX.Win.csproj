@@ -1,0 +1,154 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{01D673DE-5CD4-491D-B4AF-563360C1BC9E}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RootNamespace>FarsiLibrary.FX.Win</RootNamespace>
+    <AssemblyName>FarsiLibrary.FX.Win</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>library</OutputType>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\out\FarsiLibrary.FX.Win\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Windows.Design.Markup, Version=0.0.4032.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="PresentationFramework.Aero">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework.Classic">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework.Luna">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework.Royale">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Aero.NormalColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Classic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Luna.Homestead.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Luna.Metallic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Luna.NormalColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Royale.NormalColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\TextCell.cs" />
+    <Compile Include="Converters\DateTimeValueConverter.cs" />
+    <Compile Include="Controls\DatePicker\FXDatePicker.cs" />
+    <Compile Include="Controls\Events.cs" />
+    <Compile Include="Controls\MonthView\CalendarDay.cs" />
+    <Compile Include="Controls\MonthView\CalendarDayCollection.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewButton.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewCommands.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewHeader.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewHelper.cs" />
+    <Compile Include="Converters\DaysHeaderConverter.cs" />
+    <Compile Include="Controls\MonthView\FXMonthView.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewContainer.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewWeekDayHeaderCell.cs" />
+    <Compile Include="Controls\MonthView\FXMonthViewItem.cs" />
+    <Compile Include="Converters\DayValueConverter.cs" />
+    <Compile Include="Converters\YearMonthConverter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Resources\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarsiLibrary.FX.Utils\FarsiLibrary.FX.Utils.csproj">
+      <Project>{A4D4D2E2-762A-4C74-9285-5FFD030E83E2}</Project>
+      <Name>FarsiLibrary.FX.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Strings.ar-SA.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.fa-IR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

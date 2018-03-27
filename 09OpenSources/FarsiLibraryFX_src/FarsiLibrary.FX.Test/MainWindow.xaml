@@ -1,0 +1,63 @@
+﻿<Window x:Class="FarsiLibrary.FX.Test.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="MainWindow" Height="400" Width="780">
+	<Window.Resources>
+		<XmlDataProvider x:Key="demos">
+			<x:XData>
+				<Demos xmlns="">
+					<Demo Page="Demos\MonthView.xaml" Title="FXMonthView" />
+					<Demo Page="Demos\DatePicker.xaml" Title="FXDatePicker" />
+					<Demo Page="Demos\Themes.xaml" Title="Custom Theme" />
+				</Demos>
+			</x:XData>
+		</XmlDataProvider>
+
+		<DataTemplate x:Key="DemoTemplate">
+			<TextBlock HorizontalAlignment="Center" Text="{Binding XPath=@Title}" Margin="2" FontWeight="Heavy" FontFamily="Tahoma" FontSize="12" x:Name="tb"/>
+		</DataTemplate>
+
+	</Window.Resources>
+
+	<DockPanel LastChildFill="True">
+		<StatusBar x:Name="status" DockPanel.Dock="Bottom">
+			<StatusBar.Items>
+				<StatusBarItem>
+					<StackPanel Orientation="Horizontal" Height="25">
+						<TextBlock x:Name="statusText" Text="Application Theme : " VerticalAlignment="Center" />
+						<ComboBox VerticalAlignment="Center" x:Name="cmbThemes" SelectionChanged="ComboBox_SelectionChanged" Height="20" Width="120">
+							<ComboBoxItem IsSelected="True">Application Default</ComboBoxItem>
+							<ComboBoxItem Tag="Aero.NormalColor">Aero</ComboBoxItem>
+							<ComboBoxItem Tag="Royale.NormalColor">Royale</ComboBoxItem>
+							<ComboBoxItem Tag="Luna.NormalColor">Luna NormalColor</ComboBoxItem>
+							<ComboBoxItem Tag="Luna.Homestead">Luna Homestead</ComboBoxItem>
+							<ComboBoxItem Tag="Luna.Metallic">Luna Metallic</ComboBoxItem>
+							<ComboBoxItem Tag="Classic">Classic</ComboBoxItem>
+						</ComboBox>
+					</StackPanel>
+				</StatusBarItem>
+			</StatusBar.Items>
+		</StatusBar>
+
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+
+			<ListBox Name="DemoList" Width="200"
+				SelectedIndex="0" 
+				ItemsSource="{Binding Source={StaticResource demos}, XPath=Demos/Demo}"
+				ItemTemplate="{StaticResource DemoTemplate}"
+				HorizontalContentAlignment="Center"			
+				VerticalAlignment="Top"
+				SelectedValuePath="@Page"
+				Margin="10"
+				Padding="5"/>
+
+			<Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="10" CornerRadius="2" Padding="10">
+				<Frame Name="ContentFrame" Source="{Binding ElementName=DemoList, Path=SelectedValue}" NavigationUIVisibility="Hidden"/>
+			</Border>
+		</Grid>
+	</DockPanel>
+</Window>
