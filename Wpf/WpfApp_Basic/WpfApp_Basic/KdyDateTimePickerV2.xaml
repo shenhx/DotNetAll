@@ -93,7 +93,7 @@
             Margin="8,4,0,0" 
             Name="Part_DateTimePickerTextBlock"             
             VerticalAlignment="Stretch" 
-            Text="{Binding Path=DataContext.DateTimeFormatValue}"/>
+            Text="{Binding DateTimeFormatValue}"/>
 
         <!--日期时间控件-->
         <Grid x:Name="Part_CalendarAndTime" 
@@ -127,7 +127,7 @@
                                 <TextBlock Text="&lt;" FontSize="20"></TextBlock>
                             </Button.Content>
                         </Button>
-                        <TextBlock VerticalAlignment="Center" FontSize="15" Text="{Binding CurrentYear}"></TextBlock>
+                        <TextBlock VerticalAlignment="Center" x:Name="tbCurrentYear" FontSize="15" Text="{Binding CurrentYear}"></TextBlock>
                         <Button VerticalAlignment="Center"  Command="{Binding YearCommand}" CommandParameter="Next" Style="{StaticResource TransparentButtonStyle}">
                             <Button.Content>
                                 <TextBlock Text="&gt;" FontSize="20"></TextBlock>
@@ -138,7 +138,7 @@
                                 <TextBlock Text="&lt;" FontSize="20"></TextBlock>
                             </Button.Content>
                         </Button>
-                        <TextBlock VerticalAlignment="Center" Text="{Binding CurrentMonth}" FontSize="15"></TextBlock>
+                        <TextBlock x:Name="tbCurrentMonth" VerticalAlignment="Center" Text="{Binding CurrentMonth}" FontSize="15"></TextBlock>
                         <Button VerticalAlignment="Center" Command="{Binding MonthCommand}" CommandParameter="Next" Style="{StaticResource TransparentButtonStyle}">
                             <Button.Content>
                                 <TextBlock Text="&gt;" FontSize="20"></TextBlock>
@@ -147,13 +147,13 @@
                     </StackPanel>
                     <!--日期头-->
                     <UniformGrid Grid.Row="1" Columns="7">
-                        <TextBlock Text="MON" TextAlignment="Center"></TextBlock>
-                        <TextBlock Text="TUE" TextAlignment="Center"></TextBlock>
-                        <TextBlock Text="WED" TextAlignment="Center"></TextBlock>
-                        <TextBlock Text="THU" TextAlignment="Center"></TextBlock>
-                        <TextBlock Text="FRI" TextAlignment="Center"></TextBlock>
-                        <TextBlock Text="SAT" TextAlignment="Center"></TextBlock>
-                        <TextBlock Text="SUN" TextAlignment="Center"></TextBlock>
+                        <TextBlock Text="一" TextAlignment="Center"></TextBlock>
+                        <TextBlock Text="二" TextAlignment="Center"></TextBlock>
+                        <TextBlock Text="三" TextAlignment="Center"></TextBlock>
+                        <TextBlock Text="四" TextAlignment="Center"></TextBlock>
+                        <TextBlock Text="五" TextAlignment="Center"></TextBlock>
+                        <TextBlock Text="六" TextAlignment="Center"></TextBlock>
+                        <TextBlock Text="日" TextAlignment="Center"></TextBlock>
                     </UniformGrid>
                     <!--日期部分-->
                     <ItemsControl Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Auto"
@@ -161,23 +161,24 @@
                             ItemsSource="{Binding Days}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <!-- Style="{StaticResource CalendarTransparentButtonStyle}"-->
-                                <Button Background="{Binding Converter={StaticResource BACKUP_DateTimeToColorConverter}}"
+                                <!--Background="{Binding Converter={StaticResource BACKUP_DateTimeToColorConverter}}" Style="{StaticResource CalendarTransparentButtonStyle}"-->
+                                <Button
                                     Content="{Binding Converter={StaticResource BACKUP_DateTimeToDayConverter}}" 
-                                    Command="{Binding DataContext.ChooseDateCommand,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}}}" CommandParameter="{Binding}"><!--MouseDoubleClick="Button_MouseDoubleClick"-->
+                                    Click="Button_Click"><!--MouseDoubleClick="Button_MouseDoubleClick"-->
                                     <Button.Foreground>
                                         <MultiBinding Converter="{StaticResource BACKUP_DateTimeToForegroundMultiConverter}">
                                             <Binding></Binding>
-                                            <Binding Path="DataContext.CurrentMonth" RelativeSource="{RelativeSource FindAncestor,AncestorType={x:Type Window}}"></Binding>
+                                            <Binding ElementName="tbCurrentMonth" Path="Text"></Binding>
                                         </MultiBinding>
                                     </Button.Foreground>
-                                    <!--<Button.IsEnabled>
+                                    <!--控制本月的月份是可选，其他月份中日期不可操作-->
+                                    <Button.IsEnabled>
                                         <MultiBinding Converter="{StaticResource BACKUP_DateTimeToEnableMultiConverter}">
                                             <Binding></Binding>
-                                            <Binding Path="DataContext.CutoffDayBegin" RelativeSource="{RelativeSource FindAncestor,AncestorType={x:Type Window}}"></Binding>
-                                            <Binding Path="DataContext.CutoffDayEnd" RelativeSource="{RelativeSource FindAncestor,AncestorType={x:Type Window}}"></Binding>
+                                            <Binding ElementName="tbCurrentYear" Path="Text"></Binding>
+                                            <Binding ElementName="tbCurrentMonth" Path="Text"></Binding>
                                         </MultiBinding>
-                                    </Button.IsEnabled>-->
+                                    </Button.IsEnabled>
                                 </Button>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>   

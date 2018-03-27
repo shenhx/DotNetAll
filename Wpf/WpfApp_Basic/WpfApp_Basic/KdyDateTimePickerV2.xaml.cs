@@ -20,7 +20,7 @@ namespace WpfApp_Basic
     /// <summary>
     /// KdyDateTimePickerV2.xaml 的交互逻辑
     /// </summary>
-    public partial class KdyDateTimePickerV2 : UserControl,INotifyPropertyChanged
+    public partial class KdyDateTimePickerV2 : UserControl, INotifyPropertyChanged
     {
         public KdyDateTimePickerV2()
         {
@@ -54,8 +54,9 @@ namespace WpfApp_Basic
             MonthCommand = new DelegateCommand();
             MonthCommand.ExecuteAction = new Action<object>(OperaterMonthCommand);
 
-            ChooseDateCommand = new DelegateCommand();
-            ChooseDateCommand.ExecuteAction = new Action<object>(ChooseCurrentDate);
+            //ChooseDateCommand = new DelegateCommand();
+            //ChooseDateCommand.CanExecuteFunc = new Func<object, bool>(obj => { return true; });
+            //ChooseDateCommand.ExecuteAction = new Action<object>(ChooseCurrentDate);
 
             HideCalendarCommand = new DelegateCommand();
             HideCalendarCommand.ExecuteAction = new Action<object>(DateTimeSelect_Completed);
@@ -89,7 +90,7 @@ namespace WpfApp_Basic
         {
             if ("Pre".Equals(parameter))
             {
-               CurrentMonth -= 1;
+                CurrentMonth -= 1;
             }
             else if ("Next".Equals(parameter))
             {
@@ -107,7 +108,7 @@ namespace WpfApp_Basic
         /// <param name="parameter"></param>
         private void ChooseCurrentDate(object parameter)
         {
-            string dateString = string.Format("{0}-{1}-{2}",CurrentYear,CurrentMonth,parameter);
+            string dateString = string.Format("{0}-{1}-{2}", CurrentYear, CurrentMonth, parameter);
             SelectDate = Convert.ToDateTime(dateString);
         }
 
@@ -119,7 +120,7 @@ namespace WpfApp_Basic
         {
             if ("Ok".Equals(parameter))
             {
-                string dateString = string.Format("{0} {1}:{2}:{3}", SelectDate.ToString("yyyy-MM-dd"),HourText,MinuteText,SecondText);
+                string dateString = string.Format("{0} {1}:{2}:{3}", SelectDate.ToString("yyyy-MM-dd"), HourText, MinuteText, SecondText);
                 Value = Convert.ToDateTime(dateString);
             }
             IsDateTimeControlOpen = false;
@@ -140,7 +141,7 @@ namespace WpfApp_Basic
             set { SetValue(DateTimeFormatProperty, value); }
             get { return (string)GetValue(DateTimeFormatProperty); }
         }
-        
+
         private static void OnFormatChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
             if (!"yyyy-MM-dd HH:mm:ss".Equals(args.NewValue)//24小时制度
@@ -171,7 +172,7 @@ namespace WpfApp_Basic
                     }
                 }
             }));
-        
+
         /// <summary>
         /// 设置或者获取日期时间的值
         /// </summary>
@@ -180,17 +181,18 @@ namespace WpfApp_Basic
             set
             {
                 SetValue(ValueProperty, value);
+                OnPropertyChanged("DateTimeFormatValue");
             }
             get
             {
-                return (DateTime)GetValue(ValueProperty);;
+                return (DateTime)GetValue(ValueProperty); ;
             }
         }
 
         #endregion
 
         #endregion
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -199,8 +201,6 @@ namespace WpfApp_Basic
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
             e.Handled = true;
-            CutoffDayBegin = DateTime.Now.AddDays(-7);
-            CutoffDayEnd = DateTime.Now.AddDays(7);
             ConvertBack_ChooseDateTime();
             IsDateTimeControlOpen = true;
         }
@@ -331,27 +331,30 @@ namespace WpfApp_Basic
         /// </summary>
         public DateTime SelectDate { get; set; }
 
-        private DateTime _cutoffDayBegin;
-        public DateTime CutoffDayBegin
-        {
-            get { return _cutoffDayBegin; }
-            set
-            {
-                _cutoffDayBegin = value;
-                OnPropertyChanged("CutoffDayBegin");
-            }
-        }
+        //public static readonly DependencyProperty CutoffDayBeginProperty = DependencyProperty.Register("CutoffDayBegin", typeof(DateTime), typeof(KdyDateTimePickerV2));
+        //private DateTime _cutoffDayBegin;
+        //public DateTime CutoffDayBegin
+        //{
+        //    get { return _cutoffDayBegin; }
+        //    set
+        //    {
+        //        _cutoffDayBegin = value;
+        //        OnPropertyChanged("CutoffDayBegin");
+        //    }
+        //}
 
-        private DateTime _cutoffDayEnd;
-        public DateTime CutoffDayEnd
-        {
-            get { return _cutoffDayEnd; }
-            set
-            {
-                _cutoffDayEnd = value;
-                OnPropertyChanged("CutoffDayEnd");
-            }
-        }
+        //public static readonly DependencyProperty CutoffDayEndProperty = DependencyProperty.Register("CutoffDayEnd", typeof(DateTime),typeof(KdyDateTimePickerV2));
+
+        //private DateTime _cutoffDayEnd;
+        //public DateTime CutoffDayEnd
+        //{
+        //    get { return _cutoffDayEnd; }
+        //    set
+        //    {
+        //        _cutoffDayEnd = value;
+        //        OnPropertyChanged("CutoffDayEnd");
+        //    }
+        //}
         #endregion
 
         #region 事件绑定
@@ -387,6 +390,10 @@ namespace WpfApp_Basic
             _days.Clear();
             DateTime datetime = new DateTime(year, month, 1);
             int week = (int)datetime.DayOfWeek;
+            if (week == 0) //第一天为星期天的话，前面顶6格
+                week = 7;
+            else if (week == 1)//第一天为星期一的话，第一行留空
+                week = 8;
             datetime = datetime.AddDays(1 - week);
             for (int i = 0; i < 42; i++)
             {
@@ -415,7 +422,7 @@ namespace WpfApp_Basic
             DateTime dt = DateTime.MinValue;
             if (!string.IsNullOrEmpty(DateTimeFormatValue))
             {
-                if(!DateTime.TryParse(DateTimeFormatValue, out dt))
+                if (!DateTime.TryParse(DateTimeFormatValue, out dt))
                 {
                     dt = DateTime.Now;
                 }
@@ -428,6 +435,14 @@ namespace WpfApp_Basic
             CurrentMonth = dt.Month;
             CurrentYear = dt.Year;
             Init_TimeCtrl(dt);//初始化时间控件
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            var parameter = (sender as Button).Content;
+            string dateString = string.Format("{0}-{1}-{2}", CurrentYear, CurrentMonth, parameter);
+            SelectDate = Convert.ToDateTime(dateString);
         }
     }
 
@@ -505,19 +520,28 @@ namespace WpfApp_Basic
     }
 
     /// <summary>
-    /// 
+    /// 使当前月份的日期可以活动
     /// </summary>
     public class DateTimeToEnableMultiConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-
             DateTime currentDay, cutoffDayBegin, cutoffDayEnd;
-            if (values[0] is DateTime && values[1] is DateTime && values[2] is DateTime)
+            if (values[0] is DateTime && values[1] is string && values[2] is string)
             {
                 currentDay = (DateTime)values[0];
-                cutoffDayBegin = (DateTime)values[1];
-                cutoffDayEnd = (DateTime)values[2];
+                int year = int.Parse(values[1].ToString());
+                int month = int.Parse(values[2].ToString());
+                cutoffDayBegin = new DateTime(year, month, 1);
+                cutoffDayEnd = cutoffDayBegin;
+                for (int i = 28; i <= 31; i++)
+                {
+                    if (cutoffDayEnd.AddDays(i).Month != cutoffDayEnd.Month)
+                    {
+                        cutoffDayEnd = new DateTime(year, month, i);//结束日
+                        break;
+                    }
+                }
                 if (DateTime.Compare(currentDay, cutoffDayBegin) >= 0 && DateTime.Compare(currentDay, cutoffDayEnd) <= 0)
                 {
                     return true;
@@ -531,8 +555,6 @@ namespace WpfApp_Basic
             {
                 return false;
             }
-
-
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
@@ -542,7 +564,7 @@ namespace WpfApp_Basic
     }
 
     /// <summary>
-    /// 
+    /// 提取日志中的天数，例如2018-03-01中返回1
     /// </summary>
     public class DateTimeToDayConverter : IValueConverter
     {
@@ -551,7 +573,7 @@ namespace WpfApp_Basic
             if (value != null)
             {
                 DateTime dt = (DateTime)(value);
-                string strDay = dt.Day.ToString();
+                string strDay = dt.Day.ToString().PadLeft(2, '0');
                 return strDay;
             }
             return "";
@@ -564,16 +586,17 @@ namespace WpfApp_Basic
     }
 
     /// <summary>
-    /// 
+    /// 高亮当天日期，目前没有效果
     /// </summary>
     public class DateTimeToColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            if (value != null && parameter is DateTime)
             {
                 DateTime dt = (DateTime)(value);
-                if(DateTime.Compare(dt.Date,DateTime.Now.Date) == 0)
+                DateTime selectDate = (DateTime)(parameter);
+                if (DateTime.Compare(dt.Date, selectDate.Date) == 0)
                 {
                     return new SolidColorBrush(Colors.Blue);
                 }
