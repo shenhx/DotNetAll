@@ -82,8 +82,7 @@ namespace WpfApp_Basic
         {
             get { return Value.ToString(DateTimeFormat); }
         }
-
-
+        
         /// <summary>
         /// 设置或者获取日期时间的值
         /// </summary>

@@ -15,10 +15,14 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <DatePicker Height="25" Width="200" SelectedDateFormat="Long"></DatePicker>
         <local:DateTimePicker Height="25" Width="200" Grid.Row="1" DateTimeFormat="yyyy/MM/dd hh:mm:ss" Margin="0,20"></local:DateTimePicker>
         <local:KdyDatetimePicker Height="25" Width="200" Grid.Row="2" DateTimeFormat="yyyy/MM/dd HH:mm:ss" Value="2018-03-19 12:00:00" Margin="0,20"></local:KdyDatetimePicker>
+        <local:KdyDateTimePickerV2 Height="25" Width="200"  Grid.Row="3" DateTimeFormat="yyyy/MM/dd HH:mm:ss" Value="2018-03-19 12:00:00" Margin="0,20"></local:KdyDateTimePickerV2>
     </Grid>
 </Window>
     

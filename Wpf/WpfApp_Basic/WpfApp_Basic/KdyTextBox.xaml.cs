@@ -20,7 +20,7 @@ namespace WpfApp_Basic
     /// KdyTextBox.xaml 的交互逻辑
     /// </summary>
     [ToolboxBitmap(typeof(KdyTextBox))]
-    public partial class KdyTextBox : UserControl, INotifyPropertyChanged
+    public partial class KdyTextBox : UserControl, INotifyPropertyChanged, ICommandSource
     {
         public KdyTextBox()
         {
@@ -46,6 +46,8 @@ namespace WpfApp_Basic
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler CanExecuteChanged;
+
         protected void OnPropertyChanged(string propertyName = "")
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -59,6 +61,14 @@ namespace WpfApp_Basic
         {
             get { return txtControl.Text; }
         }
+
+        public static readonly DependencyProperty CommandProperty;
+        public static readonly DependencyProperty CommandParameterProperty;
+        public ICommand Command { get; set; }
+
+        public object CommandParameter { get; set; }
+
+        public IInputElement CommandTarget { get; set; }
 
         public override string ToString()
         {

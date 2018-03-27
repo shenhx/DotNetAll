@@ -59,6 +59,9 @@
     <Compile Include="IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="KdyDateTimePickerV2.xaml.cs">
+      <DependentUpon>KdyDateTimePickerV2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="KdyTextBox.xaml.cs">
       <DependentUpon>KdyTextBox.xaml</DependentUpon>
     </Compile>
@@ -73,6 +76,9 @@
     </Compile>
     <Compile Include="TMinSexView.xaml.cs">
       <DependentUpon>TMinSexView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window_Command.xaml.cs">
+      <DependentUpon>Window_Command.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window_DateTimePicker.xaml.cs">
       <DependentUpon>Window_DateTimePicker.xaml</DependentUpon>
@@ -92,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="IconButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KdyDateTimePickerV2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TMinSexView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_Command.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
