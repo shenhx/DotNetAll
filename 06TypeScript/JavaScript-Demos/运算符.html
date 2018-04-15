@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {};
+        Object.defineProperty(obj,'x',{
+            configurable :false,//不允许删除
+            value:1
+        });
+        delete obj.x;
+        console.log(obj.x);
+
+        var f1 = function(){
+            // var a = b = 1;//这时候b在函数给调用的时候提升为全局变量
+            var a  =1,b = 1;//推荐使用该种方法
+            console.log(a);
+            console.log(b);
+        }
+        f1();
+        console.log(typeof a);
+        console.log(typeof b);
+        //console.log(b);
+    </script>
+</body>
+</html>

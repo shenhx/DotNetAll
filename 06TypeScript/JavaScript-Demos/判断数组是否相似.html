@@ -1,0 +1,118 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Untitled Document</title>
+
+</head>
+
+<body>
+    <script type="text/javascript">   
+        /*
+         * param1 Array 
+         * param2 Array
+         * return true or false
+         */
+        function arraysSimilar(arr1, arr2) {
+            if (!(arr1 instanceof Array) || !(arr2 instanceof Array)) {
+                //不能使用typeof,typeof arr1 的结果是Object
+                return false;
+            }
+            if (arr1.length !== arr2.length) {
+                return false;
+            }
+            var len = arr2.length;
+            for (var i = 0; i < arr1.length; i++) {//循环数组1
+                //arr1[i].index = i; //保存数组1的下标
+                for (var j = 0; j < arr2.length; j++) {//循环数组2
+                    //判断null
+                    if(arr1[i] === null && arr2[j] === null){
+                        arr2.splice(j, 1);//删除该元素
+                            continue;
+                    } 
+                    if(arr1[i] === null || arr2[j] === null){
+                            continue;
+                    } 
+                    if (typeof arr1[i] == "object" && typeof arr2[j] == "object") {//如果数组1的i元素和数组2的j元素都是对象执行以下if
+                        if (Object.prototype.toString.apply(arr1[i]) == Object.prototype.toString.apply(arr2[j])) {//检查两者的对象是否一致
+                            arr2.splice(j, 1);//删除该元素
+                            continue;
+                        }
+                    } else if (typeof arr1[i] === typeof arr2[j]) {//如果类型一致，执行以下循环
+                        arr2.splice(j, 1);//删除该元素
+                        continue;
+                    }
+                }
+                if (arr2.length === len) {
+                    return false;//检查数组2的长度是否变化，未变化即证明没有匹配成功
+                } else { len = arr2.length }
+            }
+            return true;
+        };
+
+    </script>
+    <script>
+        var result = function () {
+            //以下为多组测试数据
+            var cases = [{
+                arr1: [1, true, null],
+                arr2: [null, false, 100],
+                expect: true
+            }, {
+                arr1: [function () { }, 100],
+                arr2: [100, {}],
+                expect: false
+            }, {
+                arr1: [null, 999],
+                arr2: [{}, 444],
+                expect: false
+            }, {
+                arr1: [window, 1, true, new Date(), "hahaha", (function () { }), undefined],
+                arr2: [undefined, (function () { }), "okokok", new Date(), false, 2, window],
+                expect: true
+            }, {
+                arr1: [new Date()],
+                arr2: [{}],
+                expect: false
+            }, {
+                arr1: [window],
+                arr2: [{}],
+                expect: false
+            }, {
+                arr1: [undefined, 1],
+                arr2: [null, 2],
+                expect: false
+            }, {
+                arr1: [new Object, new Object, new Object],
+                arr2: [{}, {}, null],
+                expect: false
+            }, {
+                arr1: null,
+                arr2: null,
+                expect: false
+            }, {
+                arr1: [],
+                arr2: undefined,
+                expect: false
+            }, {
+                arr1: "abc",
+                arr2: "cba",
+                expect: false
+            }];
+
+            //使用for循环, 通过arraysSimilar函数验证以上数据是否相似，如相似显示“通过”,否则"不通过",所以大家要完成arraysSimilar函数,具体要求，详见任务要求。    
+            for (var i = 0; i < cases.length; i++) {
+                if (arraysSimilar(cases[i].arr1, cases[i].arr2) !== cases[i].expect) {
+                    document.write("不通过！case" + (i + 1) + "不正确！arr1=" + JSON.stringify(cases[i].arr1) + ", arr2=" + JSON.stringify(cases[i].arr2) + " 的判断结果不是" + cases[i].expect);
+                    return false;
+                }
+            }
+            return true;
+
+        }();
+        document.write("判定结果:" + (result ? "通过" : "不通过"));
+    </script>
+</body>
+
+</html>
