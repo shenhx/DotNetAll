@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = new Array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h');
+        function func(aInx, bInx) {
+            //console.log(aInx + '-' + bInx);
+            if ((arr.length - aInx < 5) || (bInx + 4) > arr.length) {
+                //return;
+                if ((aInx + 4) > arr.length) {
+                    return;
+                }
+                if((bInx + 4) > arr.length){
+                    //console.log(bInx);
+                    aInx++;
+                    bInx = aInx+1;
+                    func(aInx, bInx);
+                    return;
+                }
+            }
+            var obj2 = arr.slice(aInx, aInx + 1).concat(arr.slice(bInx, bInx + 4)).join();
+            console.log(obj2);
+            bInx++;
+            func(aInx, bInx);
+        }
+        func(0, 1);
+    </script>
+
+</body>
+
+</html>
