@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex布局</title>
+    <style>
+        .field-content {
+            display: -webkit-box;
+            /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+            display: -moz-box;
+            /* 老版本语法: Firefox (buggy) */
+            display: -ms-flexbox;
+            /* 混合版本语法: IE 10 */
+            display: -webkit-flex;
+            /* 新版本语法: Chrome 21+ */
+            display: flex;
+            /* 新版本语法: Opera 12.1, Firefox 22+ */
+            align-items: center;
+            /*设置父元素内部的伸缩子元素项目换行规则：水平排列（row）不换行（nowrap）*/
+            -webkit-box-orient: horizontal; /*老版本：iOS 6-, Safari 3.1-6*/
+            -webkit-flex-flow: row nowrap; /*新版本：Chrome*/
+            flex-flow: row nowrap; /*标准规范：Opera 12.1, Firefox 20+*/
+        }
+
+        .field-content .switchButton-left-block {
+            -webkit-box-flex: 1.0;
+            box-flex: 1.0;
+            -webkit-flex: 1.0;
+            flex: 1;
+            width: 0;
+            /*解决兼容性问题*/
+            background: red;
+        }
+
+        .field-content .switchButton-right-block {
+            -webkit-box-flex: 0 0 2.5em;
+            box-flex: 0 0 2.5em;
+            -webkit-flex: 0 0 2.5em;
+            flex: 0 0 2.5em;
+            width: 0;
+            /*解决兼容性问题*/
+            margin-left: 3px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="field-content">
+        <div class="switchButton-left-block">
+            解放军今天（4月18日）在台湾海峡进行实弹演练，目标直指“台独”分裂势力。在此之前，台湾已经是一片鸡飞狗跳。台湾当局喊着“共军是例行性演习，不用恐慌”，却又承认“提升海陆空战备”，并接连宣布多项对抗性军演。 台湾“中广新闻网”称，海峡两岸接连实兵操练，台海步步惊心。蔡英文不顾岛内的一堆“烂摊子”，强作镇定地17日出访“友邦”斯威士兰，却又在行前罕见地特别叮嘱“国安团队”，要紧盯各项状况、随时应变。
+            为让岛内民众“安心”，蔡英文按原计划于17日启程前往非洲“邦交国”斯威士兰。这是蔡英文就任后第一次访问非洲。不过台媒对蔡英文出发前连篇累牍地讲述双方友好关系完全不感兴趣，而把重点放在这几句话上——“国安团队在我出访期间务必严密掌握周边情势，随时汇报，做好应变”。台“今日新闻网”称，蔡英文这是要“国安团队”
+            严密掌控大陆军演。 　　亲绿的“自由电子报”提到，蔡英文乘坐的专机起飞后，4架“ 幻影2000”战机从新竹空军基地起飞，伴飞至恒春，全程历时20分钟。民进党前“立委”林浊水质疑称，不是才说解放军福建军演是例行性的吗？有这么严重吗？
+            　　另外，台军最近也“动作不断”，17 日台陆军金门边防指挥部举行演训，台湾海巡部门将于19日和20日在淡水河口实施对海实弹射击。另外，台军本周还将与新加坡“星光部队”在屏东恒春半岛实施“正午操演”。
+        </div>
+        <div class="switchButton-right-block">
+            <input type="button" value="hello">
+        </div>
+    </div>
+</body>
+
+</html>
