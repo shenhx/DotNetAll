@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppClrViaCsharp4", "AppClrViaCsharp4\AppClrViaCsharp4.csproj", "{6FBF8784-E3DF-4A22-B0F1-4DF7802BECC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppClrViaCsharp4Test", "AppClrViaCsharp4Test\AppClrViaCsharp4Test.csproj", "{079E5955-CABB-45A7-9BC0-9412428D92E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FBF8784-E3DF-4A22-B0F1-4DF7802BECC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FBF8784-E3DF-4A22-B0F1-4DF7802BECC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FBF8784-E3DF-4A22-B0F1-4DF7802BECC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FBF8784-E3DF-4A22-B0F1-4DF7802BECC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{079E5955-CABB-45A7-9BC0-9412428D92E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{079E5955-CABB-45A7-9BC0-9412428D92E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{079E5955-CABB-45A7-9BC0-9412428D92E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{079E5955-CABB-45A7-9BC0-9412428D92E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2AC36A9-00B4-4AB7-84EB-3A4E9FACD32F}
+	EndGlobalSection
+EndGlobal
