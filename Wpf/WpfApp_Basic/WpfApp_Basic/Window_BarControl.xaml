@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfApp_Basic.Window_BarControl"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication11"
+        xmlns:kd="clr-namespace:KDY.IP.DOC.Uc"
+        mc:Ignorable="d"
+        Title="Window1" Height="300" Width="900">
+    <Grid>
+        <kd:KdyBarChartControl x:Name="kdyBarChartControl" Width="500" Height="250" HeaderHeight="20">
+            <kd:KdyBarChartControl.AxisY>
+                <kd:AxisYModel Width="30" ForeGround="Black">
+                    <kd:AxisYModel.Titles>
+                        <kd:AxisYDataModel Name="0" Value="0"></kd:AxisYDataModel>
+                        <kd:AxisYDataModel Name="20" Value="20"></kd:AxisYDataModel>
+                        <kd:AxisYDataModel Name="40" Value="40"></kd:AxisYDataModel>
+                        <kd:AxisYDataModel Name="60" Value="60"></kd:AxisYDataModel>
+                        <kd:AxisYDataModel Name="80" Value="80"></kd:AxisYDataModel>
+                        <kd:AxisYDataModel Name="100" Value="100"></kd:AxisYDataModel>
+                    </kd:AxisYModel.Titles>
+                </kd:AxisYModel>
+            </kd:KdyBarChartControl.AxisY>
+            <kd:KdyBarChartControl.AxisX>
+                <kd:AxisXModel Height="30" ForeGround="Black">
+                    <kd:AxisXModel.Datas>
+                        <kd:AxisXDataModel Name="呼吸内科" Value="100" Tag="1" FillBrush="DeepSkyBlue" FillEndBrush="#FF6CD7FB"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="感染科" Value="50"  Tag="2" FillBrush="#FF06F906" FillEndBrush="#FF5CF95C"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="新生儿科" Value="70" Tag="3"  FillBrush="Cyan" FillEndBrush="#FF4DFFFF"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="重症医学科" LabelWidth="48"  Value="30" Tag="4" FillBrush="GreenYellow" FillEndBrush="#FFBFFD60"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="妇产科" Value="86" Tag="5" FillBrush="DarkOrchid" FillEndBrush="#FFCC73F7"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F" Value="60" Tag="6" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                    </kd:AxisXModel.Datas>
+                </kd:AxisXModel>
+            </kd:KdyBarChartControl.AxisX>
+        </kd:KdyBarChartControl>
+    </Grid>
+</Window>
+

@@ -31,8 +31,8 @@ namespace WpfApp_OrderLabel_Print
         
         private void Btn_Print_Click(object sender, RoutedEventArgs e)
         {
-            Print("1", "Microsoft XPS Document Writer");
-            //Print("1", "ZDesigner GK888t(EPL)");
+            //Print("1", "Microsoft XPS Document Writer");
+            Print("0", "ZDesigner GK888t(EPL)");
         }
 
         private void Print(string pageDirection,string printerName)
@@ -64,7 +64,7 @@ namespace WpfApp_OrderLabel_Print
             Uri printViewUrl = null;
             try
             {
-                printViewUrl = new Uri("/WpfApp_OrderLabel_Print;component/OrderLabelPage.xaml", UriKind.RelativeOrAbsolute);
+                printViewUrl = new Uri("/WpfApp_OrderLabel_Print;component/OrderLabelPage_Zhfy.xaml", UriKind.RelativeOrAbsolute);
                 orderLabelPrintPage = (FixedPage)Application.LoadComponent(printViewUrl);
             }
             catch (Exception ex)

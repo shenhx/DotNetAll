@@ -36,6 +36,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>libs\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,14 +56,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BarChartControl.xaml.cs">
+      <DependentUpon>BarChartControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DateTimePicker.xaml.cs">
       <DependentUpon>DateTimePicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="IconButton.xaml.cs">
       <DependentUpon>IconButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="KdyBarChartControl.xaml.cs">
+      <DependentUpon>KdyBarChartControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="KdyDateTimePickerV2.xaml.cs">
       <DependentUpon>KdyDateTimePickerV2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KdyLineChartControl.xaml.cs">
+      <DependentUpon>KdyLineChartControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="KdyTextBox.xaml.cs">
       <DependentUpon>KdyTextBox.xaml</DependentUpon>
@@ -68,6 +80,7 @@
     <Compile Include="KdyDatetimePicker.xaml.cs">
       <DependentUpon>KdyDatetimePicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Behaviors\PopupDragMoveBehavior.cs" />
     <Compile Include="TDateTimeView.xaml.cs">
       <DependentUpon>TDateTimeView.xaml</DependentUpon>
     </Compile>
@@ -77,11 +90,20 @@
     <Compile Include="TMinSexView.xaml.cs">
       <DependentUpon>TMinSexView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window_BarControl.xaml.cs">
+      <DependentUpon>Window_BarControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window_Command.xaml.cs">
       <DependentUpon>Window_Command.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window_DateTimePicker.xaml.cs">
       <DependentUpon>Window_DateTimePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window_LineControl.xaml.cs">
+      <DependentUpon>Window_LineControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window_Popup.xaml.cs">
+      <DependentUpon>Window_Popup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window_TabControl.xaml.cs">
       <DependentUpon>Window_TabControl.xaml</DependentUpon>
@@ -89,6 +111,10 @@
     <Compile Include="Window_TextBox.xaml.cs">
       <DependentUpon>Window_TextBox.xaml</DependentUpon>
     </Compile>
+    <Page Include="BarChartControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ControlStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -101,9 +127,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="KdyBarChartControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="KdyDateTimePickerV2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KdyLineChartControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="KdyTextBox.xaml">
       <SubType>Designer</SubType>
@@ -137,11 +171,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Window_BarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window_Command.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Window_DateTimePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_LineControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_Popup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -182,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

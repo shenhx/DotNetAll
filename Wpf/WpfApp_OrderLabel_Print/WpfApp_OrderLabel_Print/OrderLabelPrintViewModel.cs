@@ -54,7 +54,7 @@ namespace WpfApp_OrderLabel_Print
                     {
                         ItemName = "1生理盐水静脉注errrrrsdsds射你好热热热热好红红火火液",
                         Dosage = "f高100ml"
-                    },
+                    }
                     //new AdviceInfo()
                     //{
                     //    ItemName = "生理盐水静脉注射液",
@@ -70,11 +70,11 @@ namespace WpfApp_OrderLabel_Print
                     //    ItemName = "生理盐水静脉注射液",
                     //    Dosage = "50ml"
                     //},
-                    new AdviceInfo()
-                    {
-                        ItemName = "生理盐水静脉注射液",
-                        Dosage = "50ml"
-                    }
+                    //new AdviceInfo()
+                    //{
+                    //    ItemName = "生理盐水静脉注射液",
+                    //    Dosage = "50ml"
+                    //}
                 }
             }//,
             //new OrderLableInfo

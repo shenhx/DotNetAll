@@ -26,6 +26,23 @@
                 <ComboBoxItem Content="二级护理 10"></ComboBoxItem>
                 <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
             </ComboBox>
+            <ComboBox Height="25" Width="200" IsReadOnly="True"  Style="{StaticResource ComboBoxStyle}">
+                <ComboBoxItem Content="特级护理 10" IsSelected="True"></ComboBoxItem>
+                <ComboBoxItem Content="一级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="二级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+                <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
+            </ComboBox>
         </StackPanel>
     </Grid>
 </Window>
