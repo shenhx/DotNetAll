@@ -338,5 +338,65 @@ namespace WpfApp_OrderLabel_Print
             stackPanel.Children.Add(GetTextBlock(dosageTbStyle, dosage));
             return stackPanel;
         }
+
+        private void Btn_Print2_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog print = new PrintDialog();
+            var orderLableModels = _viewModel.AdviceLables;
+            //打印队列
+            LocalPrintServer localPrintServer = new LocalPrintServer();
+            PrintQueueCollection printQueues = localPrintServer.GetPrintQueues(new[] { EnumeratedPrintQueueTypes.Local, EnumeratedPrintQueueTypes.Connections });
+
+            if (printQueues == null || !printQueues.Any())
+            {
+                MessageBox.Show("PrintQueues为空，打印出错！");
+                return;
+            }
+
+            //设置打印机信息
+            //PrintQueue queue = printQueues.FirstOrDefault(p => p.Name.Equals("Microsoft XPS Document Writer"));
+            PrintQueue queue = printQueues.FirstOrDefault(p => p.Name.Equals("ZDesigner GK888t (EPL)"));
+            if (queue == null)
+            {
+                MessageBox.Show("获取打印机驱动失败！");
+            }
+            print.PrintQueue = queue;
+            FixedPage orderLabelPrintPage = null;
+            //找程序目录下，如果找不到就读程序预制的打印样式文件。
+            Uri printViewUrl = null;
+            try
+            {
+                printViewUrl = new Uri("/WpfApp_OrderLabel_Print;component/PatWristBandPage.xaml", UriKind.RelativeOrAbsolute);
+                orderLabelPrintPage = (FixedPage)Application.LoadComponent(printViewUrl);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("加载打印资源错误，原因：{0}，请联系系统管理员！", ex.Message));
+                return;
+            }
+            double height = orderLabelPrintPage.Height;
+            double width = orderLabelPrintPage.Width;
+            //打印纸张方向
+            if ("1".Equals("0"))
+            {
+                print.PrintTicket.PageOrientation = System.Printing.PageOrientation.Portrait;  //横印
+                print.PrintTicket.PageMediaSize = new PageMediaSize(width, height);
+            }
+            else
+            {
+                print.PrintTicket.PageMediaSize = new PageMediaSize(height, width);
+                print.PrintTicket.PageOrientation = System.Printing.PageOrientation.Landscape;  //横印
+            }
+
+            #region 直接打印
+            FixedDocument fixedDocument = new FixedDocument();
+            PageContent pageContent = new PageContent();
+
+            ((IAddChild)pageContent).AddChild(orderLabelPrintPage);
+            fixedDocument.Pages.Add(pageContent);
+            print.PrintDocument(fixedDocument.DocumentPaginator, "病人腕带");
+            #endregion
+
+        }
     }
 }

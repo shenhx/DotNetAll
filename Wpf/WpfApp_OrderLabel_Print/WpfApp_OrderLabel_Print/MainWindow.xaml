@@ -43,6 +43,7 @@
                 <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
                 <ComboBoxItem Content="三级护理 10"></ComboBoxItem>
             </ComboBox>
+            <Button Height="25" Width="200" Content="打印腕带" Click="Btn_Print2_Click" Margin="159.2,0"/>
         </StackPanel>
     </Grid>
 </Window>
