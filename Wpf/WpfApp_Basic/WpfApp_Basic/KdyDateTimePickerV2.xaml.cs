@@ -446,7 +446,7 @@ namespace WpfApp_Basic
         }
     }
 
-    #region ViewModel相关信息
+    #region 命令代理类
 
     /// <summary>
     /// 命令代理类型
@@ -479,8 +479,7 @@ namespace WpfApp_Basic
     }
 
     #endregion
-
-
+    
     #region 转换类
     /// <summary>
     /// 

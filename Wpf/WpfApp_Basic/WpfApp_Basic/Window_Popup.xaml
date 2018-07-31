@@ -1,0 +1,58 @@
+﻿<Window x:Class="WpfApp_Basic.Window_Popup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_Basic"
+        mc:Ignorable="d"
+        Title="Window_Popup" Height="300" Width="300">
+    <Grid x:Name="mainGrid">
+        <Button x:Name="btnShowPopup" Height="25" Width="200" Content="显示" Click="btnShowPopup_Click"></Button>
+        <!--弹出框-->
+        <Popup x:Name="popupPatients"
+               Width="860"
+               Height="250"
+               StaysOpen="True"
+               IsOpen="False"
+               AllowsTransparency="True"
+               PopupAnimation="Slide"
+               PlacementTarget="{Binding ElementName=mainGrid}"
+               Placement="Center"
+               HorizontalOffset="-120"
+               Grid.RowSpan="4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Background="White" MouseLeftButtonDown="Border_MouseLeftButtonDown" MouseLeftButtonUp="Border_MouseLeftButtonUp">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5,0">
+                        <TextBlock Text="{Binding TitleTag,TargetNullValue='无法识别'}"></TextBlock>
+                        <TextBlock>-重点病人监控列表</TextBlock>
+                    </StackPanel>
+                </Border>
+                <Grid Grid.Row="1">
+                    <ListView x:Name="PateintsListView" MouseDoubleClick="PateintsListView_MouseDoubleClick" 
+                          ItemsSource="{Binding IpPatientInfoList}" 
+                          SelectedItem="{Binding SelectIpPatientInfo}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="序号" DisplayMemberBinding="{Binding RowNum}" Width="40px" />
+                                <GridViewColumn Header="姓名" DisplayMemberBinding="{Binding PatName}" Width="80px"  />
+                                <GridViewColumn Header="性别" DisplayMemberBinding="{Binding PatSex}"  Width="50px" />
+                                <GridViewColumn Header="年龄" DisplayMemberBinding="{Binding PatAge}" Width="50px"  />
+                                <GridViewColumn Header="科室" DisplayMemberBinding="{Binding DeptName}"  Width="130px" />
+                                <GridViewColumn Header="床号" DisplayMemberBinding="{Binding BedNo}" Width="50px"  />
+                                <GridViewColumn Header="住院号" DisplayMemberBinding="{Binding IpNo}" Width="60px"  />
+                                <GridViewColumn Header="入院日期" DisplayMemberBinding="{Binding InWardDate}" Width="100px"  />
+                                <GridViewColumn Header="诊断" DisplayMemberBinding="{Binding IpDiag}" Width="150px"  />
+                                <GridViewColumn Header="护理级别" DisplayMemberBinding="{Binding NurseLevel}"  Width="70px" />
+                                <GridViewColumn Header="病情" DisplayMemberBinding="{Binding PatCondition}"  Width="80px" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Grid>
+        </Popup>
+    </Grid>
+</Window>
