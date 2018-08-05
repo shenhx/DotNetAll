@@ -1,0 +1,11 @@
+﻿<Window x:Class="BenchmarkDotNetTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed"></CommandBinding>
+    </Window.CommandBindings>
+    <Grid>
+        <Button Height="25" Width="200" Content="Generate Report" Command="ApplicationCommands.New"/>
+    </Grid>
+</Window>

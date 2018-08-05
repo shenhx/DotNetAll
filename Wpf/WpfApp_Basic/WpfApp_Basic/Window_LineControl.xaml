@@ -53,7 +53,7 @@
     Stroke="Blue" StrokeDashArray="2, 4"
     StrokeThickness="1" />-->
 
-        <kd:KdyLineChartControl x:Name="lineChartControl" Width="500" Height="250" HeaderHeight="20" AxisYMaxValue="1.0">
+        <kd:KdyLineChartControl x:Name="lineChartControl" Width="500" Height="250" AxisYMaxValue="1.0">
         </kd:KdyLineChartControl>
     </Grid>
 </Window>

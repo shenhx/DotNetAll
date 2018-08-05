@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="KDNewtonsoft.Json">
+      <HintPath>..\..\..\..\..\..\kingdee\hCloud_online\K3Cloud\Bin\KDNewtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -52,6 +55,7 @@
     <Compile Include="DpiHelperTest.cs" />
     <Compile Include="ObjectMapperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="JTokenTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

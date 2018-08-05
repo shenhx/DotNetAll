@@ -16,7 +16,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                 <TextBlock Text="0012111床" MaxWidth="60" MinWidth="50" Margin="0,0,5,0" x:Name="TbBedNo" TextAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
                 <TextBlock x:Name="TbDeptName" Margin="5,0,0,0" MaxWidth="120" MinWidth="100"  Text="外科一区外科一区" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 <TextBlock Text="112岁" x:Name="TbPatAge" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="30" MaxWidth="33" Margin="5,0,0,0" TextAlignment="Center"></TextBlock>

@@ -354,8 +354,8 @@ namespace WpfApp_OrderLabel_Print
             }
 
             //设置打印机信息
-            //PrintQueue queue = printQueues.FirstOrDefault(p => p.Name.Equals("Microsoft XPS Document Writer"));
-            PrintQueue queue = printQueues.FirstOrDefault(p => p.Name.Equals("ZDesigner GK888t (EPL)"));
+            PrintQueue queue = printQueues.FirstOrDefault(p => p.Name.Equals("Mickrosoft XPS Document Writer"));
+            //PrintQueue queue = printQueues.FirstOrDefault(p => p.Name.Equals("ZDesigner GK888t (EPL)"));
             if (queue == null)
             {
                 MessageBox.Show("获取打印机驱动失败！");
@@ -377,7 +377,7 @@ namespace WpfApp_OrderLabel_Print
             double height = orderLabelPrintPage.Height;
             double width = orderLabelPrintPage.Width;
             //打印纸张方向
-            if ("1".Equals("0"))
+            if ("0".Equals("0"))
             {
                 print.PrintTicket.PageOrientation = System.Printing.PageOrientation.Portrait;  //横印
                 print.PrintTicket.PageMediaSize = new PageMediaSize(width, height);

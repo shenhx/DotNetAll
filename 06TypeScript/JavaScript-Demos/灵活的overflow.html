@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>灵活的 overflow</title>
+    <style>
+        html {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: 23px/36px '21Cent-Regular', Georgia, serif, Helvetica Neue, Arial;
+            font-feature-settings: "lnum" 0, "onum";
+            -webkit-font-smoothing: subpixel-antialiased;
+            text-rendering: optimizelegibility;
+        }
+
+        .demo {
+            margin-top: 18px;
+            box-sizing: border-box;
+            text-align: left;
+            width: 756px;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: visible;
+            position: relative;
+            cursor: text;
+            padding: 50px;
+        }
+
+        .example>input {
+            vertical-align: middle;
+            margin: -0.2em 0 0;
+            cursor: pointer;
+        }
+
+        .example>label {
+            cursor: pointer;
+        }
+
+        .wrapper {
+            resize: horizontal;
+            overflow: hidden;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.5em 1em;
+            border: 1px solid;
+            transition: width 1.5s;
+            margin-top: 10px;
+        }
+
+        .heading {
+            margin: 0;
+            text-align: center;
+            line-height: 1;
+            word-wrap: break-word;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .menu {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            justify-content: space-around;
+        }
+
+        .menu-item {
+            flex-shrink: 1;
+            overflow: hidden;
+            min-width: 2em;
+            padding: 0 0.5em;
+            text-align: center;
+            text-shadow: 0 1px #FFF;
+            margin: 0;
+        }
+
+        .menu-item:before {
+            display: none;
+        }
+
+        .menu-item a {
+            padding: .3em 0 .287em;
+            cursor: pointer;
+            color: #0985ce;
+            text-decoration: none;
+        }
+
+        .menu-item a:hover {
+            color: #8c64b4;
+        }
+
+        .overflower {
+            display: inline-flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+            box-sizing: border-box;
+            max-width: 100%;
+            height: 1.5em;
+            line-height: 1.5em;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .overflower-short {
+            display: block;
+            overflow: hidden;
+            flex-grow: 1;
+            width: 0;
+            text-overflow: ellipsis;
+        }
+
+        .overflower-long {
+            flex-basis: 100%;
+            display: inline;
+        }
+
+        [overflower-text]:after {
+            content: attr(overflower-text);
+        }
+
+        :checked+label+.wrapper {
+            width: 30% !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <div class="example">
+            <input type="checkbox" id="WidthToggler2">
+            <label for="WidthToggler2">拖动下面容器或选择复选框</label>
+            <div class="wrapper">
+                <span class="overflower">
+                    <span class="overflower-short" aria-hidden="true" title="如果你调整容器大小，可以看到短文本！">
+                        <span class="overflower">
+                            <span class="overflower-short">
+                                <span class="overflower">
+                                    <span class="overflower-short">
+                                        <span class="overflower">
+                                            <span class="overflower-short">🙀</span>
+                                            <span class="overflower-long">迷你文本!</span>
+                                        </span>
+                                    </span>
+                                    <span class="overflower-long">这里是短文本！</span>
+                                </span>
+                            </span>
+                            <span class="overflower-long">慢慢的缩小容器你可以看到短文本和迷你文本的内容！</span>
+                        </span>
+                    </span>
+                    <span class="overflower-long">慢慢的缩小容器你可以看到短文本和迷你文本的内容!</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="example">
+            <input type="checkbox" id="WidthTogglerHeader">
+            <label for="WidthTogglerHeader">拖动下面容器或选择复选框</label>
+            <div class="wrapper">
+                <h2 class="heading">
+                    <span class="overflower">
+                        <span class="overflower-short" aria-hidden="true" title="真的可以把长的文本变成短的文本，试试看呗!">
+                            <span class="overflower">
+                                <span class="overflower-short" overflower-text="长 → 短"></span>
+                                <span class="overflower-long" overflower-text="长标题慢慢的会变成短标题！"></span>
+                            </span>
+                        </span>
+                        <span class="overflower-long">真的可以把长的文本变成短的文本，试试看呗!(^_^)</span>
+                    </span>
+                </h2>
+            </div>
+        </div>
+
+        <div class="example">
+            <input type="checkbox" id="WidthTogglerMenu" />
+            <label for="WidthTogglerMenu">拖动下面容器或选择复选框</label>
+            <div class="wrapper">
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a href="#">
+                            <span class="overflower">
+                                <span class="overflower-short" aria-hidden="true" title="🐈 行走的猫猫 🐈">
+                                    <span class="overflower">
+                                        <span class="overflower-short">🐈🐈🐈</span>
+                                        <span class="overflower-long">行走的猫猫</span>
+                                    </span>
+                                </span>
+                                <span class="overflower-long">🐈 行走的猫猫 🐈</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">
+                            <span class="overflower">
+                                <span class="overflower-short" aria-hidden="true" title="🙀 惊讶的猫猫 🙀">
+                                    <span class="overflower">
+                                        <span class="overflower-short">🙀🙀🙀</span>
+                                        <span class="overflower-long">惊讶的猫猫</span>
+                                    </span>
+                                </span>
+                                <span class="overflower-long">🙀 惊讶的猫猫 🙀</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">
+                            <span class="overflower">
+                                <span class="overflower-short" aria-hidden="true" title="🦁 伤心欲绝的狮子 🦁">
+                                    <span class="overflower">
+                                        <span class="overflower-short">🦁🦁🦁</span>
+                                        <span class="overflower-long">伤心欲绝的狮子</span>
+                                    </span>
+                                </span>
+                                <span class="overflower-long">🦁 伤心欲绝的狮子 🦁</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

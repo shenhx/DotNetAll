@@ -60,19 +60,27 @@ namespace KDY.IP.DOC.Uc
         }
         public static readonly DependencyProperty HeaderHeightProperty = DependencyProperty.Register("HeaderHeight",
         typeof(double), typeof(KdyBarChartControl), new PropertyMetadata(10.0));
-        public string Header
-        {
-            get { return (string)GetValue(HeaderProperty); }
-            set { SetValue(HeaderProperty, value); }
-        }
-        public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register("Header",
-        typeof(string), typeof(KdyBarChartControl), new PropertyMetadata());
 
         private void BarChartControl_OnLoaded(object sender, RoutedEventArgs e)
         {
+            //设定元素宽高
             BottomGrid.Height = AxisX.Height;
             LeftGrid.Width = AxisY.Width;
+            LeftGrid.Height = this.ActualHeight - BottomGrid.Height;
+            LeftGrid.Margin = new Thickness(0, 0, 0, BottomGrid.Height);
+            var axisXModel = AxisX;
 
+            double actualWidth = 60 * (axisXModel.Datas.Count);
+            if (actualWidth < this.ActualWidth)
+            {
+                actualWidth = this.ActualWidth - LeftGrid.Width;
+            }
+            MainGridFrom0To1.Width = actualWidth;
+            MainGridForRow1.Width = actualWidth;
+            BottomGrid.Width = actualWidth;
+            MainGridFrom0To1.Height = this.ActualHeight - BottomGrid.Height;
+            MainGridForRow1.Height = this.ActualHeight - BottomGrid.Height;
+            
             //清除数据
             if(MainGridFrom0To1.Children != null)
                 MainGridFrom0To1.Children.Clear();
@@ -95,7 +103,7 @@ namespace KDY.IP.DOC.Uc
             if (axisXModel.Datas.Count > 0)
             {
                 int count = axisXModel.Datas.Count;
-                for (int i = 0; i < count + 1; i++)
+                for (int i = 0; i < count; i++)
                 {
                     BottomGrid.ColumnDefinitions.Add(new ColumnDefinition());
                     MainGridFrom0To1.ColumnDefinitions.Add(new ColumnDefinition());
@@ -107,13 +115,9 @@ namespace KDY.IP.DOC.Uc
                     var textblock = new TextBlock();
                     textblock.Text = data.Name;
                     textblock.Foreground = axisXModel.ForeGround;
-                    textblock.VerticalAlignment = VerticalAlignment.Top;
+                    textblock.VerticalAlignment = VerticalAlignment.Center;
                     textblock.TextAlignment = TextAlignment.Center;
                     textblock.HorizontalAlignment = HorizontalAlignment.Center;
-                    double textBlockWidth = data.LabelWidth;
-                    textblock.Width = data.LabelWidth;
-                    textblock.Background = Brushes.Red;
-                    //textblock.Margin = new Thickness(0, 5, textBlockWidth/4, 0);
                     Grid.SetColumn(textblock, index);
                     BottomGrid.Children.Add(textblock);
                     
@@ -121,13 +125,13 @@ namespace KDY.IP.DOC.Uc
                     var stackPanel = new StackPanel();
                     stackPanel.Orientation = Orientation.Vertical;
 
-                    var tbl = new TextBlock();
-                    tbl.Height = 15;
-                    tbl.Margin = new Thickness(0, 0, 0, 5);
-                    tbl.Text = data.Value.ToString();
-                    tbl.Foreground = axisXModel.ForeGround;
-                    tbl.HorizontalAlignment = HorizontalAlignment.Center;
-                    stackPanel.Children.Add(tbl);
+                    //var tbl = new TextBlock();
+                    //tbl.Height = 15;
+                    //tbl.Margin = new Thickness(0, 0, 0, 5);
+                    //tbl.Text = data.Value.ToString();
+                    //tbl.Foreground = axisXModel.ForeGround;
+                    //tbl.HorizontalAlignment = HorizontalAlignment.Center;
+                    //stackPanel.Children.Add(tbl);
 
                     //改为按钮形式
                     var btn = new Button();
@@ -135,15 +139,15 @@ namespace KDY.IP.DOC.Uc
                     btn.BorderThickness = new Thickness(0);
                     btn.BorderBrush = new SolidColorBrush(Colors.Transparent);
                     double maxValue = AxisY.Titles.Max(i => i.Value);
-                    btn.Height = (data.Value / maxValue) * (this.ActualHeight - BottomGrid.Height - HeaderHeight);
+                    btn.Height = (data.Value / maxValue) * (this.ActualHeight - BottomGrid.Height);
                     btn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFEC8B"));
                     btn.HorizontalAlignment = HorizontalAlignment.Center;
                     btn.MouseDoubleClick += Btn_MouseDoubleClick;
-                    btn.Margin = new Thickness(0, 5, 0, 0);
+                    btn.Margin = new Thickness(0, 0, 10, 0);
                     btn.Tag = data.Tag;//附带信息
                     stackPanel.Children.Add(btn);
 
-                    //stackPanel.Margin = new Thickness(0, 0, -textBlockWidth / 2, 0);
+                    //stackPanel.Margin = new Thickness(0, 0, -btn.Width / 2, 0);
                     stackPanel.VerticalAlignment = VerticalAlignment.Bottom;
                     stackPanel.HorizontalAlignment = HorizontalAlignment.Center;
 
@@ -173,7 +177,7 @@ namespace KDY.IP.DOC.Uc
             var axisYModel = AxisY;
             if (axisYModel.Titles.Count > 0)
             {
-                int gridRows = axisYModel.Titles.Count - 1;
+                int gridRows = axisYModel.Titles.Count-1;//总数-1
                 for (int i = 0; i < gridRows; i++)
                 {
                     LeftGrid.RowDefinitions.Add(new RowDefinition());
@@ -182,21 +186,23 @@ namespace KDY.IP.DOC.Uc
                 int index = 0;
                 foreach (var title in axisYModel.Titles)
                 {
+                    double thickness = Convert.ToDouble(title.LineHeight);
                     var textblock = new TextBlock();
                     textblock.Text = title.Name;
                     textblock.Foreground = axisYModel.ForeGround;
-                    textblock.HorizontalAlignment = HorizontalAlignment.Right;
+                    textblock.HorizontalAlignment = HorizontalAlignment.Center;
                     textblock.Height = title.LabelHeight;
+                    
                     if (index < gridRows)
                     {
+                        textblock.Margin = new Thickness(0, 5, 0, -title.LabelHeight / 2);//因为设置在行底部还不够,必须往下移
                         textblock.VerticalAlignment = VerticalAlignment.Bottom;
-                        textblock.Margin = new Thickness(0, 0, 5, -title.LabelHeight / 2);//因为设置在行底部还不够,必须往下移
                         Grid.SetRow(textblock, gridRows - index - 1);
                     }
                     else
                     {
+                        textblock.Margin = new Thickness(0, -title.LabelHeight / 2, 5, 0);//最后一个,设置在顶部
                         textblock.VerticalAlignment = VerticalAlignment.Top;
-                        textblock.Margin = new Thickness(0, - title.LabelHeight / 2, 5, 0);//最后一个,设置在顶部
                         Grid.SetRow(textblock, 0);
                     }
                     LeftGrid.Children.Add(textblock);
@@ -204,22 +210,21 @@ namespace KDY.IP.DOC.Uc
                     var border = new Border();
                     border.Height = title.LineHeight;
                     border.BorderBrush = title.LineBrush ;
-                    double thickness = Convert.ToDouble(title.LineHeight) / 2;
-                    border.BorderThickness = new Thickness(0, thickness, 0, thickness);
+                    
                     if (index < gridRows)
                     {
+                        border.BorderThickness = new Thickness(0, 0, 0, thickness);
                         border.VerticalAlignment = VerticalAlignment.Bottom;
                         border.Margin = new Thickness(0, 0, 0, -thickness);//因为设置在行底部还不够,必须往下移
                         Grid.SetRow(border, gridRows - index - 1);
                     }
                     else
                     {
+                        border.BorderThickness = new Thickness(0, thickness, 0, 0);
                         border.VerticalAlignment = VerticalAlignment.Top;
-                        border.Margin = new Thickness(0, -thickness, 0, 0);//最后一个,设置在顶部
+                        border.Margin = new Thickness(0, 4*thickness, 0, 0);//最后一个,设置在顶部
                         Grid.SetRow(border, 0);
                     }
-                    Grid.SetColumn(border, 0);
-                    Grid.SetColumnSpan(border, AxisX.Datas.Count + 1);
                     MainGridForRow1.Children.Add(border);
                     index++;
                 }
@@ -343,7 +348,7 @@ namespace KDY.IP.DOC.Uc
             get { return _labelHeight; }
             set { _labelHeight = value; }
         }
-        private double _lineHeight = 0.2;
+        private double _lineHeight = 0.5;
         /// <summary>
         /// GridLine高度
         /// </summary>

@@ -22,8 +22,8 @@ namespace KDY.IP.DOC.Uc
             this.DefaultVerticalOffset = defVerizontalOffset;
         }
 
-        public double DefaultHorizontalOffset { get; }
-        public double DefaultVerticalOffset { get; }
+        public double DefaultHorizontalOffset { get; set; }
+        public double DefaultVerticalOffset { get; set; }
 
         protected override void OnAttached()
         {
