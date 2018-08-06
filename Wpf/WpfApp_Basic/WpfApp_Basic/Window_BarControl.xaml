@@ -30,6 +30,26 @@
                         <kd:AxisXDataModel Name="重症医学科" LabelWidth="48"  Value="30" Tag="4" FillBrush="GreenYellow" FillEndBrush="#FFBFFD60"></kd:AxisXDataModel>
                         <kd:AxisXDataModel Name="妇产科" Value="86" Tag="5" FillBrush="DarkOrchid" FillEndBrush="#FFCC73F7"></kd:AxisXDataModel>
                         <kd:AxisXDataModel Name="F" Value="60" Tag="6" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F1" Value="60" Tag="7" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F2" Value="60" Tag="8" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F3" Value="60" Tag="9" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F4" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F5" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F6" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F7" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F8" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F9" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F10" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F11" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F12" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F13" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F14" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F15" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F16" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F17" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F18" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F19" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
+                        <kd:AxisXDataModel Name="F20" Value="60" Tag="10" FillBrush="Coral" FillEndBrush="#FFF9A181"></kd:AxisXDataModel>
                     </kd:AxisXModel.Datas>
                 </kd:AxisXModel>
             </kd:KdyBarChartControl.AxisX>

@@ -46,20 +46,6 @@ namespace KDY.IP.DOC.Uc
         public static readonly DependencyProperty AxisXProperty = DependencyProperty.Register("AxisX",
         typeof(LineChartAxisXModel), typeof(KdyLineChartControl),
         new PropertyMetadata(new LineChartAxisXModel()));
-        public double HeaderHeight
-        {
-            get { return (double)GetValue(HeaderHeightProperty); }
-            set { SetValue(HeaderHeightProperty, value); }
-        }
-        public static readonly DependencyProperty HeaderHeightProperty = DependencyProperty.Register("HeaderHeight",
-        typeof(double), typeof(KdyLineChartControl), new PropertyMetadata(10.0));
-        public string Header
-        {
-            get { return (string)GetValue(HeaderProperty); }
-            set { SetValue(HeaderProperty, value); }
-        }
-        public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register("Header",
-        typeof(string), typeof(KdyLineChartControl), new PropertyMetadata());
 
         public static readonly DependencyProperty AxisYMaxValueProperty = DependencyProperty.Register("AxisYMaxValue", typeof(double), typeof(KdyLineChartControl), new PropertyMetadata(1.0, (s, e) => {
             if (0.Equals(e.NewValue))
@@ -88,8 +74,30 @@ namespace KDY.IP.DOC.Uc
         /// </summary>
         public void InitControl()
         {
+            //设定元素宽高
             BottomGrid.Height = AxisX.Height;
             LeftGrid.Width = AxisY.Width;
+            LeftGrid.Height = this.Height - BottomGrid.Height;
+            LeftGrid.Margin = new Thickness(0, 0, 0, BottomGrid.Height);
+            var axisXModel = AxisX;
+            double actualWidth = 60 * (axisXModel.Datas.Count);
+            if (actualWidth < this.Width)
+            {
+                actualWidth = this.Width - LeftGrid.Width;
+            }
+            MainGridFrom0To1.Width = actualWidth;
+            MainGridForRow1.Width = actualWidth;
+            BottomGrid.Width = actualWidth;
+            MainGridFrom0To1.Height = this.Width - BottomGrid.Height;
+            MainGridForRow1.Height = this.Width - BottomGrid.Height;
+            //计算高度
+            if (double.IsNaN(this.BottomGrid.Height))
+                this.BottomGrid.Height = 0d;
+            if (double.IsNaN(this.LeftGrid.Width))
+                this.LeftGrid.Width = 0d;
+            //计算高度
+            if (double.IsNaN(this.BottomGrid.Height))
+                this.BottomGrid.Height = 0d;
 
             //清除数据
             this.FlushAll();
@@ -126,7 +134,7 @@ namespace KDY.IP.DOC.Uc
         private void SetXDatasContent()
         {
             var axisXModel = AxisX;
-            if (axisXModel.Datas.Count > 0)
+            if (axisXModel.Datas.Count > 0 && AxisY.Titles.Count > 0)
             {
                 int count = axisXModel.Datas.Count;
                 for (int i = 0; i < count; i++)
@@ -135,19 +143,9 @@ namespace KDY.IP.DOC.Uc
                 }
                 int index = 0;
                 
-                //计算高度
-                if (double.IsNaN(this.HeaderGrid.Height))
-                    this.HeaderGrid.Height = 0d;
-                if (double.IsNaN(this.BottomGrid.Height))
-                    this.BottomGrid.Height = 0d;
-                if (double.IsNaN(this.LeftGrid.Width))
-                    this.LeftGrid.Width = 0d;
-                if (double.IsNaN(this.RightGrid.Width))
-                    this.RightGrid.Width = 0d;
-
-                var yStartPos = this.Height - this.HeaderGrid.Height - this.BottomGrid.Height;
-                var xEndPos = this.Width - this.LeftGrid.Width - this.RightGrid.Width;
-                var xPartDistance = xEndPos / 5;
+                var yStartPos = this.Height - this.BottomGrid.Height;
+                var xEndPos = this.MainGridFrom0To1.Width;
+                var xPartDistance = Math.Floor(xEndPos / AxisX.Datas.Count);
                 double x = 0, y = 0;
                 double lastX = 0, lastY = 0;
                 PathSegmentCollection pathSegmentCollection = new PathSegmentCollection();
@@ -164,12 +162,9 @@ namespace KDY.IP.DOC.Uc
                     var textblock = new TextBlock();
                     textblock.Text = data.Name;
                     textblock.Foreground = axisXModel.ForeGround;
-                    textblock.VerticalAlignment = VerticalAlignment.Top;
+                    textblock.VerticalAlignment = VerticalAlignment.Center;
                     textblock.TextAlignment = TextAlignment.Center;
                     textblock.HorizontalAlignment = HorizontalAlignment.Center;
-                    double textBlockWidth = data.LabelWidth;
-                    textblock.Width = data.LabelWidth;
-                    textblock.Margin = new Thickness(0, 5, 0, 0);
                     Grid.SetColumn(textblock, index);
                     BottomGrid.Children.Add(textblock);
 
@@ -235,29 +230,26 @@ namespace KDY.IP.DOC.Uc
         private void SetYTitlesContent()
         {
             var axisYModel = AxisY;
-            if (axisYModel.Titles.Count > 0)
+            if (axisYModel.Titles.Count > 1)
             {
-                int gridRows = axisYModel.Titles.Count - 1;
+                int gridRows = axisYModel.Titles.Count-1;
                 for (int i = 0; i < gridRows; i++)
                 {
                     LeftGrid.RowDefinitions.Add(new RowDefinition());
-                    MainGridForRow1.RowDefinitions.Add(new RowDefinition());
                 }
                 int index = 0;
-                //计算高度
-                if (double.IsNaN(this.HeaderGrid.Height))
-                    this.HeaderGrid.Height = 0d;
-                if (double.IsNaN(this.BottomGrid.Height))
-                    this.BottomGrid.Height = 0d;
+               
                 //纵坐标高度
-                var startPos = this.Height - this.HeaderGrid.Height - this.BottomGrid.Height;
-                var partDistance = startPos / 5;//每份距离
+                var mainGrdHeight = this.Height - this.BottomGrid.Height;
+                var partDistance = Math.Floor(mainGrdHeight / (axisYModel.Titles.Count-1));//每份距离
+                Canvas lineCanvas = new Canvas();
                 foreach (var title in axisYModel.Titles)
                 {
                     var textblock = new TextBlock();
                     textblock.Text = title.Name;
                     textblock.Foreground = axisYModel.ForeGround;
-                    textblock.HorizontalAlignment = HorizontalAlignment.Right;
+                    textblock.Width = axisYModel.Width;
+                    textblock.HorizontalAlignment = HorizontalAlignment.Center;
                     textblock.Height = title.LabelHeight;
                     if (index < gridRows)
                     {
@@ -283,27 +275,28 @@ namespace KDY.IP.DOC.Uc
                         double thickness = Convert.ToDouble(title.LineHeight) / 2;
                         line.StrokeThickness = thickness;
                         line.X1 = 0;
-                        line.X2 = this.Width - LeftGrid.Width ;
-                        line.Y1 = startPos - index * partDistance;
+                        line.X2 = this.MainGridForRow1.Width;
+                        line.Y1 = Math.Floor(mainGrdHeight - index * partDistance);
                         line.Y2 = line.Y1;
-                        
+                        //Console.WriteLine("{4}:{0}-{1}-{2}-{3}，{5}", line.X1, line.X2, line.Y1, line.Y2, title.Name,partDistance);
+
                         if (index < gridRows)
                         {
                             line.VerticalAlignment = VerticalAlignment.Bottom;
                             line.Margin = new Thickness(0, 0, 0, -thickness);//因为设置在行底部还不够,必须往下移
-                            Grid.SetRow(line, gridRows - index - 1);
                         }
                         else
                         {
                             line.VerticalAlignment = VerticalAlignment.Top;
-                            line.Margin = new Thickness(0, -thickness, 0, 0);//最后一个,设置在顶部
-                            Grid.SetRow(line, 0);
+                            line.Margin = new Thickness(0, thickness, 0, 0);
                         }
-                        Grid.SetColumn(line, 0);
-                        Grid.SetColumnSpan(line, AxisX.Datas.Count + 1);
-                        MainGridForRow1.Children.Add(line);
+                        lineCanvas.Children.Add(line);
                     }
                     index++;
+                }
+                if (lineCanvas.Children.Count > 0)
+                {
+                    MainGridForRow1.Children.Add(lineCanvas);
                 }
             }
         }
