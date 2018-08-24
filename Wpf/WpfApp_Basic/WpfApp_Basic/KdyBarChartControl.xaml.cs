@@ -125,14 +125,6 @@ namespace KDY.IP.DOC.Uc
                     var stackPanel = new StackPanel();
                     stackPanel.Orientation = Orientation.Vertical;
 
-                    //var tbl = new TextBlock();
-                    //tbl.Height = 15;
-                    //tbl.Margin = new Thickness(0, 0, 0, 5);
-                    //tbl.Text = data.Value.ToString();
-                    //tbl.Foreground = axisXModel.ForeGround;
-                    //tbl.HorizontalAlignment = HorizontalAlignment.Center;
-                    //stackPanel.Children.Add(tbl);
-
                     //改为按钮形式
                     var btn = new Button();
                     btn.Width = data.BarWidth;
@@ -158,26 +150,12 @@ namespace KDY.IP.DOC.Uc
             }
         }
 
-        /// <summary>
-        /// 触发事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Btn_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if(ShowPatientsEvent != null && sender.GetType() == typeof(Button))
-            {
-                e.Handled = true;
-                ShowPatientsEvent(((Button)sender).Tag);
-            }
-        }
-
         private void SetYTitlesContent()
         {
             var axisYModel = AxisY;
             if (axisYModel.Titles.Count > 0)
             {
-                int gridRows = axisYModel.Titles.Count-1;//总数-1
+                int gridRows = axisYModel.Titles.Count - 1;//总数-1
                 for (int i = 0; i < gridRows; i++)
                 {
                     LeftGrid.RowDefinitions.Add(new RowDefinition());
@@ -192,7 +170,7 @@ namespace KDY.IP.DOC.Uc
                     textblock.Foreground = axisYModel.ForeGround;
                     textblock.HorizontalAlignment = HorizontalAlignment.Center;
                     textblock.Height = title.LabelHeight;
-                    
+
                     if (index < gridRows)
                     {
                         textblock.Margin = new Thickness(0, 5, 0, -title.LabelHeight / 2);//因为设置在行底部还不够,必须往下移
@@ -209,8 +187,8 @@ namespace KDY.IP.DOC.Uc
 
                     var border = new Border();
                     border.Height = title.LineHeight;
-                    border.BorderBrush = title.LineBrush ;
-                    
+                    border.BorderBrush = title.LineBrush;
+
                     if (index < gridRows)
                     {
                         border.BorderThickness = new Thickness(0, 0, 0, thickness);
@@ -222,7 +200,7 @@ namespace KDY.IP.DOC.Uc
                     {
                         border.BorderThickness = new Thickness(0, thickness, 0, 0);
                         border.VerticalAlignment = VerticalAlignment.Top;
-                        border.Margin = new Thickness(0, 4*thickness, 0, 0);//最后一个,设置在顶部
+                        border.Margin = new Thickness(0, 4 * thickness, 0, 0);//最后一个,设置在顶部
                         Grid.SetRow(border, 0);
                     }
                     MainGridForRow1.Children.Add(border);
@@ -230,6 +208,21 @@ namespace KDY.IP.DOC.Uc
                 }
             }
         }
+
+        /// <summary>
+        /// 触发事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(ShowPatientsEvent != null && sender.GetType() == typeof(Button))
+            {
+                e.Handled = true;
+                ShowPatientsEvent(((Button)sender).Tag);
+            }
+        }
+
     }
     public class AxisXModel
     {
@@ -394,25 +387,4 @@ namespace KDY.IP.DOC.Uc
         /// </summary>
         public object Tag { get; set; }
     }
-
-    ///// <summary>
-    ///// 表格数据
-    ///// </summary>
-    //public class DataModel
-    //{
-    //    /// <summary>
-    //    /// 显示名称
-    //    /// </summary>
-    //    public string ColumnName { get; set; }
-
-    //    /// <summary>
-    //    /// 值
-    //    /// </summary>
-    //    public double ColumnValue { get; set; }
-
-    //    /// <summary>
-    //    /// 隐藏的数据，便于
-    //    /// </summary>
-    //    public object Tag { get; set; }
-    //}
 }

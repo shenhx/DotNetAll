@@ -43,6 +43,9 @@ namespace KDY.IP.DOC.Uc
             };
         }
 
+        /// <summary>
+        /// 绑定行为之前解除所有绑定事件
+        /// </summary>
         protected override void OnDetaching()
         {
             base.OnDetaching();
@@ -72,6 +75,12 @@ namespace KDY.IP.DOC.Uc
             AssociatedObject.Child.CaptureMouse();
         }
 
+        /// <summary>
+        /// 按下鼠标后拖动窗口
+        /// </summary>
+        /// <exception cref="光标移出窗口对象后，如果鼠标左键仍然是按下的话，可以继续拖动，感觉不好"></exception>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Mouse_Move(object sender,MouseEventArgs e)
         {
             if (!_mouse_down)
@@ -79,6 +88,7 @@ namespace KDY.IP.DOC.Uc
                 return;
             }
             var childPos = e.GetPosition(AssociatedObject.Child);
+            
             var newPos = AssociatedObject.Child.PointToScreen(childPos);
             var offset = newPos - _oldPos;
             _oldPos = newPos;

@@ -145,7 +145,7 @@ namespace KDY.IP.DOC.Uc
                 
                 var yStartPos = this.Height - this.BottomGrid.Height;
                 var xEndPos = this.MainGridFrom0To1.Width;
-                var xPartDistance = Math.Floor(xEndPos / AxisX.Datas.Count);
+                var xPartDistance = xEndPos / AxisX.Datas.Count;
                 double x = 0, y = 0;
                 double lastX = 0, lastY = 0;
                 PathSegmentCollection pathSegmentCollection = new PathSegmentCollection();
@@ -241,7 +241,7 @@ namespace KDY.IP.DOC.Uc
                
                 //纵坐标高度
                 var mainGrdHeight = this.Height - this.BottomGrid.Height;
-                var partDistance = Math.Floor(mainGrdHeight / (axisYModel.Titles.Count-1));//每份距离
+                var partDistance = mainGrdHeight / (axisYModel.Titles.Count-1);//每份距离
                 Canvas lineCanvas = new Canvas();
                 foreach (var title in axisYModel.Titles)
                 {
@@ -276,7 +276,9 @@ namespace KDY.IP.DOC.Uc
                         line.StrokeThickness = thickness;
                         line.X1 = 0;
                         line.X2 = this.MainGridForRow1.Width;
-                        line.Y1 = Math.Floor(mainGrdHeight - index * partDistance);
+                        line.Y1 = mainGrdHeight - index * partDistance;
+                        if (line.Y1 < 0)
+                            line.Y1 = 0;
                         line.Y2 = line.Y1;
                         //Console.WriteLine("{4}:{0}-{1}-{2}-{3}，{5}", line.X1, line.X2, line.Y1, line.Y2, title.Name,partDistance);
 

@@ -111,6 +111,9 @@
     <Compile Include="Window_TextBox.xaml.cs">
       <DependentUpon>Window_TextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window_Tooltip.xaml.cs">
+      <DependentUpon>Window_Tooltip.xaml</DependentUpon>
+    </Compile>
     <Page Include="BarChartControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -196,6 +199,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Window_TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_Tooltip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
