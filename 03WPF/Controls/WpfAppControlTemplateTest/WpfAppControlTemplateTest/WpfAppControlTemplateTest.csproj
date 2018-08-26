@@ -52,6 +52,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Window_DataGridCombinedHeader.xaml.cs">
+      <DependentUpon>Window_DataGridCombinedHeader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window_DataGridTest.xaml.cs">
       <DependentUpon>Window_DataGridTest.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Test\DataGridControlTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window_DataGridCombinedHeader.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

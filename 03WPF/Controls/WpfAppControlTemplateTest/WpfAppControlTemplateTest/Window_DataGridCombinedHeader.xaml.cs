@@ -45,6 +45,40 @@ namespace WpfAppControlTemplateTest
              //    row.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3cffaa"));
              //}
         }
+
+        private void dataGrid1_Selected(object sender, RoutedEventArgs e)
+        {
+            var obj = sender;
+            e.Handled = true;
+        }
+
+        private void dataGrid1_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            //if (e.RemovedCells != null && e.RemovedCells.Count > 0)
+            //{
+            //    e.RemovedCells.ToList().ForEach(p => {
+            //        if(p.Column.CellStyle != null)
+            //        {
+            //            p.Column.CellStyle = null;
+            //        }
+            //    });
+            //}
+            //if (e.AddedCells != null && e.AddedCells.Count > 0)
+            //{
+            //    e.AddedCells.ToList().ForEach(p => {
+            //        if (p.Column.GetType() == typeof(DataGridTemplateColumn))
+            //        {
+            //            if (p.Column.CellStyle == null)
+            //            {
+            //                var style = new Style();
+            //                style.Setters.Add(new Setter(ForegroundProperty, new SolidColorBrush(Colors.White)));
+            //                var dataGridColumn = p.Column;
+            //                dataGridColumn.CellStyle = style;
+            //            }
+            //        }
+            //    });
+            //}
+        }
     }
 
     public class TestEntity1

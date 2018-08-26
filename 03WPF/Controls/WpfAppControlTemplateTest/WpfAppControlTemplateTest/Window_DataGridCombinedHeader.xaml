@@ -98,11 +98,11 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" x:Name="Part_CombineColumnData">
-                                <Label Content="{Binding DripBeginAllCount}" Width="60"></Label>
+                                <ContentPresenter Content="{Binding DripBeginAllCount}" Height="25" Width="60"></ContentPresenter>
                                 <Rectangle Fill="#000" VerticalAlignment="Stretch" Margin="0" Width="0.5" />
-                                <Label Content="{Binding DripBeginExecCount}" Width="60" />
+                                <ContentPresenter Content="{Binding DripBeginExecCount}" Height="25" Width="60" />
                                 <Rectangle Fill="#000" VerticalAlignment="Stretch" Margin="0" Width="0.5" />
-                                <Label Content="{Binding DripBeginRate}" Width="80" />
+                                <ContentPresenter Content="{Binding DripBeginRate}" Height="25" Width="80" />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
