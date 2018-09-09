@@ -37,5 +37,20 @@ namespace Algorithms
             Pyramid pyramid = new Pyramid();
             pyramid.Output(8);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var moduleA = new Item("A");
+            var moduleC = new Item("C",moduleA);
+            var moduleB = new Item("B", moduleC);
+            var moduleE = new Item("E", moduleB);
+            var moduleD = new Item("D", moduleE);
+            var unSorted = new[] { moduleE,moduleA,moduleD,moduleB,moduleC};
+            var sorted = TopologicalRanking.Sort(unSorted, x => x.Dependencies);
+            foreach (var item in sorted)
+            {
+                Console.WriteLine(item.Name);
+            }
+        }
     }
 }
