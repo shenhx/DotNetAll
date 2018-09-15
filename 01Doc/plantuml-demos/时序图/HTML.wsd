@@ -1,0 +1,22 @@
+@startuml Creole and header
+
+participant client
+participant "the **famous** server" as nginx
+
+client -> nginx : hello --there--
+... some ~~ long delay ~~ ...
+client -> nginx : ok
+note left
+this is **bold** 加粗
+this is //italics// 斜体
+this is "" monospaced"" 
+this is --stroked-- 删除线
+this is <color #red>__underlined__</color> 强调
+this is ~~ waved ~~  波浪线（目前没有显示出效果）
+end note
+note left of nginx
+<u:red>hello</u>
+<w:#FF33FF>this is hosted</w>
+
+end note
+@enduml

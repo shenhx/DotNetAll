@@ -1,0 +1,30 @@
+@startuml 
+
+title 逻辑分隔 
+
+== 握手 ==
+client -> server : 发起握手请求
+||100||
+client <- server : 响应握手请求
+
+== 通信 == 
+client <-> server : 消息传递
+
+== 结束 == 
+client -> server: 释放资源
+|||
+server -> client : 关闭会话
+
+
+newpage 引用
+participant Alice
+actor Bob
+
+ref over Alice ,Bob : init
+Alice -> Bob : hello
+
+ref over Bob
+init2
+end ref
+
+@enduml

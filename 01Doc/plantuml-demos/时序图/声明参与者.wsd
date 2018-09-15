@@ -1,0 +1,33 @@
+' 有以下的类型可以参考
+@startuml 声明对象
+actor Foo1 #red
+boundary Foo2
+control Foo3 order 30
+entity Foo4 order 20
+database Foo5
+collections Foo6
+participant Foo7 as "this is is my real name" #ccc
+actor Foo8 as "this is my real name too"
+
+autonumber 1
+
+Foo1 -> Foo2 : To boundary
+Foo1 -> Foo3 : To control
+Foo1 -> Foo4 : To entity
+Foo1 -> Foo5 : To database
+
+autonumber stop
+
+Foo1 -> Foo6 : To collections
+Foo1 --> Foo7 : hello ,my new guy
+Foo1 --> Foo8 : hello ,my new guy
+Foo1 -> "new guy()" : hello ,my new guy
+Foo1 --> Foo1 : hello ,me
+@enduml
+
+' 基本语法说明
+/'
+1. 声明方式主要参考上面
+2. order关键字可以从左到右顺序排列参与者，如果不显示声明，按order 0进行显示。
+3. 参与者名称可以包含括号
+'/

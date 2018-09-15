@@ -1,0 +1,21 @@
+@startuml 箭头样式
+
+' 箭头样式
+Bob ->x Alice
+Bob -> Alice
+Bob --> Alice
+Bob ->> Alice
+Bob -\ Alice
+Bob \\- Alice
+Bob //- Alice
+Bob ->o Alice
+Bob o\\- Alice
+Bob o\\-- Alice
+Bob <-> Alice
+Bob <->o Alice
+Bob o<-> Alice
+' 可以有多种组合，具体结合需求
+' 箭头颜色
+Bob -[#red]> Alice : hello
+Bob <-[#0000FF]- Alice : OK
+@enduml

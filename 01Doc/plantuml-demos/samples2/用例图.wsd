@@ -1,0 +1,16 @@
+@startuml 用例图
+
+left to right direction
+actor 医生
+actor 病人
+rectangle 诊间 {
+    患者 -- (看病)
+    note right : 医生已经叫号
+    (看病) -> (询问病情) : include
+    (看病) -> (诊查) : include
+    (看病) -> (下处方) : include
+    (合理用药) -> (看病) : extends
+    (看病) -- 医生
+}
+
+@enduml

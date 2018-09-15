@@ -1,0 +1,17 @@
+' 顺序图
+/'
+顺序图用 -> , -->, <-, <-- 来绘制参与者（Participants）之间的消息（Message）。
+'/
+@startuml SequenceDigram
+    shx -> computer : hello world
+    computer --> shx : hello world too
+    shx -> computer : intestring
+    computer --> shx : thank you 
+    computer <-- shx : you are welcome
+' 这个版本的newpage 有问题，
+newpage 
+    client -> server : hello
+
+newpage hello2
+    client -> server : hello
+@enduml

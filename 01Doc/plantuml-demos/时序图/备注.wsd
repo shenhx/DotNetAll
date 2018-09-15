@@ -1,0 +1,37 @@
+@startuml 备注
+participant client
+participant server
+
+' 针对当前的时序备注
+client -> server
+note left : 你好
+client <- server
+note right : 你好
+
+' 其他备注
+note left of client #aqua
+第一行
+第二行
+end note
+
+note right of client : 提示
+note over client : 提示
+note over client,server #FFAAAA : 提示
+
+note over client,server 
+第一行
+第二行
+end note
+
+' 改变形状
+client -> server : hello
+hnote over client : yes
+client <- server : hello2
+rnote over server
+r as rectangle
+h as hexagon
+end rnote
+
+
+
+@enduml

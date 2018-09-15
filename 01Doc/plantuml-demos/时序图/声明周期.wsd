@@ -1,0 +1,29 @@
+@startuml 生命周期
+
+participant User
+
+User -> A : DoWork
+activate A
+
+A -> B : <<createRequest>>
+activate B
+
+B -> C : DoWork
+activate C
+B <- C : WorkDone
+destroy C
+
+A <- B : RequestCreated
+deactivate B
+
+A -> User : Done
+deactivate A
+
+' Participant creation
+create Other
+User -> Other : hello
+
+create control String
+User -> String : hello
+
+@enduml

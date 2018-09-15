@@ -1,0 +1,26 @@
+@startuml GroupingMessage
+
+client -> server : 握手验证
+alt 握手成功
+    client <- server : 接收请求
+else 验证失败
+    client -> server : 握手失败
+
+group 系统攻击
+server -> Log : Log attack start
+loop 1000 times
+server -> client : DNS Attack
+end
+server -> Log : Log attack end
+end
+else 网络超时
+client -> server : 稍后再试
+end
+
+/'
+alt else end
+group end
+loop end
+'/
+
+@enduml

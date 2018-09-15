@@ -1,0 +1,19 @@
+@startuml 流入流出
+
+[-> A : DoWork
+activate A
+
+A -> A : Internal call
+activate A
+
+A ->] : <<createRequest>>
+A <--] : Requestcreated
+
+deactivate A
+
+[<- A : Done
+deactivate A
+
+
+
+@enduml
