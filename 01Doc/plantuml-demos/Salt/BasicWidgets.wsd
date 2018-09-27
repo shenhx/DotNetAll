@@ -1,0 +1,13 @@
+@startuml 基本控件
+salt
+{
+just plain text
+[this is a button]
+() unchecked radio
+(X) checked radio
+[] unchecked box
+[X] checked box
+"enter text here      "
+^this is a droplist^
+}
+@enduml

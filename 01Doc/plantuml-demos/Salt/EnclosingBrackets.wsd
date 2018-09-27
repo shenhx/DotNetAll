@@ -1,0 +1,9 @@
+@startsalt 括弧
+{
+    Name | "             "
+    Modifiers: |  {
+        (X)pulic | ()default | () private | () protected |[] abstract | [] final | [] static
+    }
+    SuperClass: |{"java.lang.Object "| [browse...]}
+}
+@endsalt

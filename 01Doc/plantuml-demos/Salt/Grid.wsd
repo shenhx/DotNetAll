@@ -1,0 +1,19 @@
+@startuml 网格
+salt
+/'
+# 全边框
++ 外边框
+- 横线
+！竖线
+'/
+{-
+    Login | "MyName"
+    Password | "***   "
+    '三种分隔线'
+    ..
+    ==
+    --
+    [Cancel] | [OK]
+}
+
+@enduml
