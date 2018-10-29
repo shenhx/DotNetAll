@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiThead_45
+namespace AsyncAwait
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // task.TestApp.Run();
-            exception.AppTest.Run();
-            Console.ReadKey();
         }
     }
 }

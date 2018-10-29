@@ -1,0 +1,7 @@
+@startuml 简单状态图
+'备注：需要依赖graphviz插件'
+start
+:state1;
+:state3;
+end
+@enduml
