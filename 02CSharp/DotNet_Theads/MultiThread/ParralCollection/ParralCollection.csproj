@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{20771FDB-E327-49D7-B0A6-7D93655AC736}</ProjectGuid>
+    <ProjectGuid>{146E52F5-82B4-4A9B-B94B-58A02599DD98}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>AsyncAwait</RootNamespace>
-    <AssemblyName>AsyncAwait</AssemblyName>
+    <RootNamespace>ParralCollection</RootNamespace>
+    <AssemblyName>ParralCollection</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,18 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="awaitable\AppTest.cs" />
-    <Compile Include="await\AppTest.cs" />
-    <Compile Include="containerTask\AppTest.cs" />
-    <Compile Include="exception\AppTest.cs" />
-    <Compile Include="lambda\AppTest.cs" />
-    <Compile Include="parral\AppTest.cs" />
+    <Compile Include="blocking\AppTest.cs" />
+    <Compile Include="dictionary\AppTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="syncvoid\AppTest.cs" />
+    <Compile Include="queue\AppTest.cs" />
+    <Compile Include="stack\AppTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp_TaskScheduler", "Wpf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwait", "AsyncAwait\AsyncAwait.csproj", "{20771FDB-E327-49D7-B0A6-7D93655AC736}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParralCollection", "ParralCollection\ParralCollection.csproj", "{146E52F5-82B4-4A9B-B94B-58A02599DD98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{20771FDB-E327-49D7-B0A6-7D93655AC736}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20771FDB-E327-49D7-B0A6-7D93655AC736}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20771FDB-E327-49D7-B0A6-7D93655AC736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{146E52F5-82B4-4A9B-B94B-58A02599DD98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{146E52F5-82B4-4A9B-B94B-58A02599DD98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{146E52F5-82B4-4A9B-B94B-58A02599DD98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{146E52F5-82B4-4A9B-B94B-58A02599DD98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
