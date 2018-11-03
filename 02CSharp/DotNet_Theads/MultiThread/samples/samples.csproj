@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6F772C14-B694-4924-9EB5-1E73433C0CDD}</ProjectGuid>
+    <ProjectGuid>{6866DCAA-E776-43B0-BA77-F562E5613303}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PLinq</RootNamespace>
-    <AssemblyName>PLinq</AssemblyName>
+    <RootNamespace>samples</RootNamespace>
+    <AssemblyName>samples</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,6 +33,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.24.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Tpl.Dataflow.4.5.24\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,17 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="aggresive\AppTest.cs" />
-    <Compile Include="exception\AppTest.cs" />
-    <Compile Include="parallel\AppTest.cs" />
-    <Compile Include="paras\AppTest.cs" />
-    <Compile Include="partition\AppTest.cs" />
-    <Compile Include="plinq\AppTest.cs" />
+    <Compile Include="blockingcollection\AppTest.cs" />
+    <Compile Include="lazy\AppTest.cs" />
+    <Compile Include="mapreduce\AppTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tpl\AppTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

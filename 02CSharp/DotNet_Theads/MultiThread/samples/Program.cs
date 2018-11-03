@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PLinq
+namespace samples
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // parallel.AppTest.Run();
-            exception.AppTest.Run();
+            mapreduce.AppTest.Run();
             Console.ReadKey();
         }
     }

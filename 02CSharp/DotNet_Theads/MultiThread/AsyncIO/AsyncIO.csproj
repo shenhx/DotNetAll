@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6F772C14-B694-4924-9EB5-1E73433C0CDD}</ProjectGuid>
+    <ProjectGuid>{BAA433A0-B234-43E9-B9CE-8AE16ED000EC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PLinq</RootNamespace>
-    <AssemblyName>PLinq</AssemblyName>
+    <RootNamespace>AsyncIO</RootNamespace>
+    <AssemblyName>AsyncIO</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,18 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="aggresive\AppTest.cs" />
-    <Compile Include="exception\AppTest.cs" />
-    <Compile Include="parallel\AppTest.cs" />
-    <Compile Include="paras\AppTest.cs" />
-    <Compile Include="partition\AppTest.cs" />
-    <Compile Include="plinq\AppTest.cs" />
+    <Compile Include="file\AppTest.cs" />
+    <Compile Include="http\AppTest.cs" />
+    <Compile Include="http\Client.cs" />
+    <Compile Include="http\Server.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

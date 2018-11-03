@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParralCollection", "ParralC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLinq", "PLinq\PLinq.csproj", "{6F772C14-B694-4924-9EB5-1E73433C0CDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncIO", "AsyncIO\AsyncIO.csproj", "{BAA433A0-B234-43E9-B9CE-8AE16ED000EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "samples", "samples\samples.csproj", "{6866DCAA-E776-43B0-BA77-F562E5613303}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{6F772C14-B694-4924-9EB5-1E73433C0CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F772C14-B694-4924-9EB5-1E73433C0CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F772C14-B694-4924-9EB5-1E73433C0CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA433A0-B234-43E9-B9CE-8AE16ED000EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA433A0-B234-43E9-B9CE-8AE16ED000EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA433A0-B234-43E9-B9CE-8AE16ED000EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA433A0-B234-43E9-B9CE-8AE16ED000EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6866DCAA-E776-43B0-BA77-F562E5613303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6866DCAA-E776-43B0-BA77-F562E5613303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6866DCAA-E776-43B0-BA77-F562E5613303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6866DCAA-E776-43B0-BA77-F562E5613303}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

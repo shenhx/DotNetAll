@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PLinq
+namespace AsyncIO
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // parallel.AppTest.Run();
-            exception.AppTest.Run();
+            http.AppTest.Run();
             Console.ReadKey();
         }
     }
