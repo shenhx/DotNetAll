@@ -59,6 +59,24 @@
                     </DataTemplate>
                 </Button.ContentTemplate>
             </Button>
+            <Button  Style="{StaticResource ButtonStyle}" Width="90" Height="25" Margin="15,0,0,0" Click="BtnExcelOutput_OnClick">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="60" Height="25">
+                            <TextBlock Margin="8,4,4,2" Width="25">导出Excel</TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button  Style="{StaticResource ButtonStyle}" Width="90" Height="25" Margin="15,0,0,0" Click="BtnExcelOutput2_OnClick">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="60" Height="25">
+                            <TextBlock Margin="8,4,4,2" Width="25">导出Excel</TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
         </StackPanel>
         <DataGrid Grid.Row="1" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="dataGrid1"
                   FrozenColumnCount="0" HeadersVisibility="Column" SelectionMode="Extended"
