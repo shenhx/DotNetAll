@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-中央事件总线</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <p>{{message}}</p>
+        <component-a></component-a>
+    </div>
+
+    <script src="../js/vue.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        var bus = new Vue();
+
+        // 注册组件
+        Vue.component('component-a',{
+            template:'<button @click="handleEvent">传递事件</button>',
+            methods:{
+                handleEvent:function(){
+                    bus.$emit('on-message','来自component-a的内容');
+                }
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message:''
+            },
+            mounted:function(){
+                var _this = this;
+                bus.$on('on-message',function(msg){
+                    _this.message = msg;
+                })
+            }
+        });
+    </script>
+</body>
+
+</html>

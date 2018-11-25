@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-父链</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <p>{{message}}</p>
+        <component-a></component-a>
+    </div>
+
+    <script src="../js/vue.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        // 注册组件
+        Vue.component('component-a',{
+            template:'<button @click="handleEvent">父链{{count}}</button>',
+            data:function(){
+                return {
+                    count:2
+                }
+            },
+            methods:{
+                handleEvent:function(){
+                    this.$parent.message = '来自component-a的内容';
+                }
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message:''
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-父子组件传递数据props3</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <my-component :init-count="1" :width="200" :height="100"></my-component>
+        <my-component2 :propA="233"></my-component2>
+    </div>
+
+    <script src="../js/vue.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                parentMessage: ''
+            },
+            components: {
+                'my-component': {
+                    props: ['initCount', 'width','height'],
+                    template: '<div :style="style">{{count}}</div>',
+                    computed: {
+                        style: {
+                            width: this.width + 'px',
+                            height: this.height + 'px'
+                        }
+                    },
+                    data: function () {
+                        return {
+                            count: this.initCount
+                        }
+                    }
+                },
+                'my-component2':{
+                    props:{
+                        propA:Number,
+                        propB:[String,Number],
+                        propC:{
+                            type:Boolean,
+                            default:true
+                        },
+                        propD:{
+                            type:Number,
+                            required:true
+                        },
+                        propE:{
+                            type:Array,
+                            default:function(){
+                                return [];
+                            }
+                        },
+                        // 自定义验证函数
+                        propF:{
+                            validator:function(value){
+                                return value > 10;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

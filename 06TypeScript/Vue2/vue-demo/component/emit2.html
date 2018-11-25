@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-双向绑定</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <p>总数：{{total}}</p>
+        <my-component v-model="total"></my-component>
+        <button @click="handleReduce">-1</button>
+    </div>
+
+    <script src="../js/vue.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                total:0
+            },
+            methods:{
+                handleReduce:function(){
+                    this.total--;
+                }
+            },
+            components: {
+                'my-component':{
+                    props:['value'],
+                    template:'<input :value="value" @input="updateValue" >',
+                    methods:{
+                        updateValue: function(event){
+                            this.$emit('input',event.target.value);
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

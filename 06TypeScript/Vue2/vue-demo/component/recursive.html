@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-组件递归调用</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <child-component :count="1"></child-component>
+    </div>
+
+    <script src="../js/vue.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        Vue.component('child-component',{
+            name:'child-component',
+            props:{
+                count:{
+                    type:Number,
+                    default:1
+                }
+            },
+            template:'\
+            <div class="child">\
+                <child-component\
+                    :count="count + 1"\
+                    v-if="count <3"></child-component>\
+            </div>',
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+            }
+        });
+    </script>
+</body>
+
+</html>

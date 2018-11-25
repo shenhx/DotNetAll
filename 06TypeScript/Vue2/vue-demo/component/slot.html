@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-slot</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <!--单个分发内容-->
+        <child-component>
+            <p>分发内容1</p>
+            <p>分发内容2</p>
+        </child-component>
+        <!--具名分发内容-->
+        <child-component2>
+            <h2 slot="header">标题</h2>
+            <p>内容1</p>
+            <p>内容2</p>
+            <p slot="footer">底部</p>
+        </child-component2>
+        <!--作用域插槽-->
+        <my-list :books="books">
+            <template scope="props" slot="book">
+                <li style="display:block;">{{props.bookName}}</li>
+            </template>
+            </child-component3>
+    </div>
+
+    <script src="../js/vue.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    { name: 'Vue.js实战' },
+                    { name: 'Vue2.js实战' },
+                    { name: 'Vue3.js实战' },
+                ]
+            },
+            methods: {
+            },
+            components: {
+                'child-component': {
+                    template: '\
+                    <div>\
+                        <slot>\
+                            <p>父组件没有插入数据</p>\
+                        </slot>\
+                    </div>'
+                },
+                'child-component2': {
+                    template: '\
+                    <div>\
+                        <div>\
+                            <slot name="header"></slot>\
+                        </div>\
+                        <div>\
+                            <slot></slot>\
+                        </div>\
+                        <div>\
+                            <slot name="footer"></slot>\
+                        </div>\
+                    </div>',
+                    mounted: function () {
+                        // 获取slot的内容
+                        var header = this.$slots.header;
+                        var main = this.$slots.default;
+                        var footer = this.$slots.footer;
+                        console.log(footer);
+                        console.log(footer[0].elm.innerHTML);
+                    },
+                },
+                'my-list': {
+                    props: {
+                        books: {
+                            type: Array,
+                            default: function () {
+                                return [];
+                            }
+                        }
+                    },
+                    template: '\
+                    <ul>\
+                        <slot name="book"\
+                        v-for="book in books"\
+                        :book-name="book.name">\
+                        </slot>\
+                    </ul>'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

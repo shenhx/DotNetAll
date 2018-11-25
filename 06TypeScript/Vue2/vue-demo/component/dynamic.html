@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-动态组件</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <component :is="currentView"></component>
+        <button @click="handleChangeView('A')">切换到A</button>
+        <button @click="handleChangeView('B')">切换到B</button>
+        <button @click="handleChangeView('C')">切换到C</button>
+    </div>
+
+    <script src="../js/vue.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                currentView: 'comA'
+            },
+            methods:{
+                handleChangeView:function(component){
+                    this.currentView = 'com'+component;
+                }
+            },
+            components:{
+                comA :{
+                    template : '<div>组件A</div>'
+                },
+                comB :{
+                    template : '<div>组件B</div>'
+                },
+                comC :{
+                    template : '<div>组件C</div>'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

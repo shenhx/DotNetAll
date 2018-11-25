@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-父子组件传递数据props2</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <input type="text" v-model="parentMessage">
+        <my-component :message="parentMessage"></my-component>
+        <!--不用v-bind语法传递过去的是静态固定的字符串-->
+        <my-component message="parentMessage"></my-component>
+    </div>
+    
+    <script src="../js/vue.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var childComponent = {
+            props:['message'],
+            template:'<div>{{message}}</div>'
+        };
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                parentMessage:''
+            },
+            components:{
+                'my-component':childComponent
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-Form表单练习</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <textarea v-model="text" cols="100" rows="10"></textarea>
+        <p>输入的内容：{{text}}</p>
+        
+        <!--汉字输入时候，在输入拼音的阶段就显示的话，可以采用@input函数辅助实现-->
+        <input type="text" @input="handleInput" placeholder="输入...">
+        <p>输入的内容是：{{message}}</p>
+
+        <!--radiobutton-->
+        <input type="radio" v-model="pickedLanguage" value="html" name="language" id="html">
+        <label for="html">Html</label>
+        <br>
+        
+        <input type="radio" v-model="pickedLanguage" value="js" name="language" id="js">
+        <label for="js">Javascript</label>
+        <br>
+        
+        <input type="radio" v-model="pickedLanguage" value="css" name="language" id="css">
+        <label for="css">Css</label>
+        <br>
+        
+        <p>选中的是：{{pickedLanguage}}</p>
+
+        <!--checkbox-->
+        <input type="checkbox" v-model="chkboxLanguage" value="html" name="language2" id="html2">
+        <label for="html2">Html</label>
+        <br>
+        <input type="checkbox" v-model="chkboxLanguage" value="js" name="language2" id="js2">
+        <label for="js2">Javascript</label>
+        <br>
+        <input type="checkbox" v-model="chkboxLanguage" value="css" name="language2" id="css2">
+        <label for="css2">Css</label>
+        <br>
+        <p>选择的项是：{{chkboxLanguage}}</p>
+
+        <!--select-->
+        <select v-model="selectedLanguage">
+            <option value="html">Html</option>
+            <option value="js">Javascript</option>
+            <option value="css">Css</option>
+        </select>
+        <p>选择的项是：{{selectedLanguage}}</p>
+        <br>
+        <select v-model="selectedLanguage2" multiple>
+            <option value="html">Html</option>
+            <option value="js">Javascript</option>
+            <option value="css">Css</option>
+        </select>
+        <p>选择的项是：{{selectedLanguage2}}</p>
+
+        <select v-model="selectedLanguage3">
+            <option v-for="option in options" :value="option.value">{{option.text}}</option>
+        </select>
+        <p>选择的项是：{{selectedLanguage3}}</p>
+
+        <!--绑定值-->
+        <input type="radio" id="radBindValue" v-model="picked" :value="value">
+        <label for="radBindValue">单选按钮</label>
+        <p>{{picked}}</p>
+        <p>{{value}}</p>
+
+        <input type="checkbox" id="chkBindValue" v-model="toggle" :true-value="value1" :false-value="value2">
+        <label for="chkBindValue"></label>
+        <p>{{toggle}}</p>
+        <p>{{value1}}</p>
+        <p>{{value2}}</p>
+
+        <!--lazy-->
+        <!--按下回车键或者焦点失效的时候有效-->
+        <input type="text" id="lazyInput"  v-model.lazy="message">
+        <p>{{message}}</p>
+
+        <input type="text" id="lazyInput" v-model.trim="message">
+        <p>{{message}}</p>
+        <!--对于数字类型比较有效-->
+        <input type="number" id="numberInput" v-model.number="message">
+        <p>{{message}}</p>
+    </div>
+    <script src="../js/vue.min.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
+</body>
+</html>

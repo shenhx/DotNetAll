@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-局部注册组件</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <my-component></my-component>
+    </div>
+    <br>
+    <!--对于app2来说组件无效，但是界面不会报错-->
+    <div id="app2" v-cloak>
+        <my-component></my-component>
+    </div>
+    <script src="../js/vue.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var childComponent = {
+            template:'<div>这里是局部注册组件的内容！</div>'
+        };
+
+        var app = new Vue({
+            el:'#app',
+            components:{
+                'my-component':childComponent
+            }
+        });
+        var app2 = new Vue({
+            el:'#app2'
+        });
+    </script>
+</body>
+</html>
