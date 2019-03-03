@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-表格排序</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+
+        table{
+            width:100%;
+            margin-bottom: 24px;
+            border-collapse: collapse;
+            border-spacing: 0;
+            empty-cells: show;
+            border: 1px solid #e9e9e9;
+        }
+
+        table th{
+            background: #f7f7f7;
+            color: #5c6b77;
+            font-weight:600;
+            white-space: nowrap; 
+        }
+
+        table td,table th{
+            padding: 8px 16px;
+            border:1px solid #e9e9e9;
+            text-align: left;
+        }
+
+        table th a{
+            display: inline-block;
+            margin:0 4px;
+            cursor: pointer;
+        }
+
+        table th a.on{
+            color:#3399ff;
+        }
+
+        table th a:hover{
+            color: #3399ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <v-table :data="data" :columns="columns"></v-table>
+        <button @click="handleAddData">添加数据</button>
+    </div>
+    <script src="../js/vue.min.js"></script>
+    <script>
+        Vue.component('vTable', {
+            props: {
+                columns: {
+                    type: Array,
+                    default: function () {
+                        return [];
+                    }
+                },
+                data: {
+                    type: Array,
+                    default: function () {
+                        return [];
+                    }
+                }
+            },
+            data: function () {
+                return {
+                    currentColumns: [],
+                    currentData: []
+                }
+            },
+            render:function(h){
+                var _this = this;
+                var ths = [];
+                this.currentColumns.forEach((col,index) => {
+                    if(col.sortable){
+                        ths.push(h('th',[
+                            h('span',col.title),
+                            h('a',{
+                                class:{
+                                    on:col._sortType === 'asc'
+                                },
+                                on:{
+                                    click:function(){
+                                        this.handleSortByAsc(index);
+                                    }
+                                }
+                            },'↑'),
+                            h('a',{
+                                class:{
+                                    on:col._sortType === 'desc'
+                                },
+                                on:{
+                                    click:function(){
+                                        this.handleSortByDesc(index);
+                                    }
+                                }
+                            },'↓'),
+                        ]));
+                    }else{
+                        this.push('th',col.title);
+                    }
+                });
+
+                var trs = [];
+                this.currentData.forEach((row) => {
+                    var tds = [];
+                    this.currentColumns.forEach(cell =>{
+                        tds.push(h('td',row[cell.key]));
+                    });
+                    trs.push(h('tr',tds));
+                });
+
+                return h('table',[
+                    h('thead',[
+                        h('tr',ths)
+                    ]),
+                    h('tbody',trs)
+                ]);
+            },
+            methods:{
+                makeColumns:function(){
+                    this.currentColumns = this.columns.map((col,index) => {
+                        col._sortType = 'normal';
+                        col._index = index;
+                        return col;
+                    });
+                },
+                makeData:function(){
+                    this.currentData = this.data.map((row,index) => {
+                        row._index = index;
+                        return row;
+                    });
+                },
+                handleSortByAsc:function(index){
+                    var key = this.currentColumns[index].key;
+                    this.currentColumns.forEach((col) => {
+                        col._sortType = 'normal';
+                    });
+                    this.currentColumns[index]._sortType = 'asc';
+
+                    this.currentData.sort(function(a,b){
+                        return a[key] > b[key]?1:-1;
+                    });
+                },
+                handleSortByDesc:function(index){
+                    var key = this.currentColumns[index].key;
+                    this.currentColumns.forEach((col) => {
+                        col._sortType = 'normal';
+                    });
+                    this.currentColumns[index]._sortType = 'desc';
+
+                    this.currentData.sort(function(a,b){
+                        return a[key] < b[key]?1:-1;
+                    });
+                },
+                watch:{
+                    data:function(){
+                        this.makeData();
+                        var sortedColumn = this.currentColumns.filter((col) =>{
+                            return col._sortType !== 'normal';
+                        });
+
+                        if(sortedColumn.length > 0){
+                            if(sortedColumn[0]._sortType === 'asc'){
+                                this.handleSortByAsc(sortedColumn[0]._index);
+                            }else{
+                                this.handleSortByDesc(sortedColumn[0]._index);
+                            }
+                        }
+                    }
+                },
+                mounted(){
+                    this.makeColumns();
+                    this.makeData();
+                }
+            }
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                columns: [{
+                    title: '姓名',
+                    key: 'name'
+                }, {
+                    title: '年龄',
+                    key: 'age',
+                    sortable: true
+                }, {
+                    title: '出生日期',
+                    key: 'birthdate',
+                    sortable: true
+                }, {
+                    title: '出生地址',
+                    key: 'address',
+                }],
+                data: [{
+                    name: '王晓明',
+                    age: 18,
+                    birthdate: '2001-01-01',
+                    address: '广东省广州市天河区xxx路'
+                }, {
+                    name: '张晓',
+                    age: 24,
+                    birthdate: '1981-01-01',
+                    address: '广东省广州市天河区xxx路'
+                }, {
+                    name: '王明',
+                    age: 11,
+                    birthdate: '1995-01-01',
+                    address: '广东省广州市天河区xxx路'
+                }, {
+                    name: '王发',
+                    age: 26,
+                    birthdate: '1992-01-01',
+                    address: '广东省广州市天河区xxx路'
+                }]
+            },
+            methods: {
+                handleAddData: function () {
+                    this.data.push({
+                        name: '李楠',
+                        age: 12,
+                        birthdate: '1998-01-01',
+                        address: '广东省广州市天河区xxx路'
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

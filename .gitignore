@@ -34,3 +34,6 @@
 bin
 obj
 */packages
+
+# node
+node_modules

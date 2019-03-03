@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-Render</title>
+</head>
+
+<body>
+    <div id="app">
+        <anchor :level="2" title="特性">特性</anchor>
+        <anchor :level="3" title="测试">测试得内容</anchor>
+    </div>
+    <script src="../js/vue.min.js"></script>
+    <script>
+        Vue.component('anchor', {
+            props: {
+                level: {
+                    type: Number,
+                    required: true
+                },
+                title: {
+                    type: String,
+                    default: ''
+                }
+            },
+            render: function (createElement) {
+                /**
+                 * createElement的参数构成
+                 * 1. {String | Object | Function} 
+                 **/
+                return createElement('h' + this.level, 
+                // 子节点
+                [createElement('a', {
+                        domProps: {
+                            href: '#' + this.title
+                        }
+                    },
+                    this.$slots.default
+                )])
+            }
+        });
+
+        var app = new Vue({
+            el:'#app'
+        });
+    </script>
+</body>
+
+</html>

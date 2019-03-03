@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-调查问卷</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div v-if="pageIndex == 0">
+            <div class="bodyContent">
+                <p>1.请问您的性别是：</p>
+                <span>
+                    <span><input type="radio" id="sex01" value="01" /><label for="sex01">男</label></span>
+                    <span><input type="radio" id="sex02" value="02" /><label for="sex02">女</label></span>
+                    <span><input type="radio" id="sex03" value="03" /><label for="sex03">保密</label></span>
+                </span>
+            </div>
+            <div class="footer">
+                
+            </div>
+        </div>
+    </div>
+    <script src="../js/vue.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

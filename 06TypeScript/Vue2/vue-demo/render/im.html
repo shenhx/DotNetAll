@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-聊天</title>
+</head>
+
+<body>
+    <div id="app">
+        <ele>
+            <p slot="header">蜜蜜聊天</p>
+        </ele>
+    </div>
+    <script src="../js/vue.min.js"></script>
+    <script>
+        Vue.component('ele', {
+            render: function (createElement) {
+                var _this = this;
+                if (this.list.length) {
+                    var listNode = createElement('ul', this.list.map(function (item) {
+                        var liNode = createElement('li', item);
+                        return liNode;
+                    }));
+                } else {
+                    var listNode = createElement('p', '暂无最新消息');
+                }
+                
+                var header = '';
+                if (this.$slots.header) {
+                    header = this.$slots.header;
+                } else {
+                    if (!this.$slots.default) {
+                        header = 'hello world';
+                    } else {
+                        header = this.$slots.default;
+                    }
+                }
+
+                return createElement('div', [
+                    createElement('h1',header),
+                    listNode,
+                    createElement('input', {
+                        attrs: {
+                            placeholder: '输入内容，按下回车键发送...'
+                        },
+                        style: {
+                            width: '200px'
+                        },
+                        on: {
+                            keyup: function (event) {
+                                if (event.keyCode !== 13) return false;
+                                _this.list.push(event.target.value);
+                                event.target.value = '';
+                            }
+                        }
+                    })
+                ]);
+            },
+            data: function () {
+                return {
+                    value: '',
+                    list: []
+                }
+            }
+        });
+
+        var app = new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "vue-webpack",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shenhx",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.26.1",
+    "webpack-dev-server": "^3.1.10"
+  }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue2-functional组件</title>
+</head>
+
+<body>
+    <div id="app">
+        <small-item :data="data"></small-item>
+        <button @click="change('img')">切换为图片组件</button>
+        <button @click="change('video')">切换为视频组件</button>
+        <button @click="change('text')">切换为文本组件</button>
+    </div>
+    <script src="../js/vue.min.js"></script>
+    <script>
+    // todo 这个案例还有问题
+    //    var ImgItem = {
+    //        props:['data'],
+    //        render:function(createElement){
+    //            return createElement('div',[
+    //                createElement('p','图片组件'),
+    //                createElement('img',{
+    //                    attrs:{
+    //                        src:this.data.url
+    //                    }
+    //                })
+    //            ]);
+    //        }
+    //    };
+
+    //    var VideoItem = {
+    //        props:['data'],
+    //        render:function(createElement){
+    //            return createElement('div',[
+    //                createElement('p','视频组件'),
+    //                createElement('video',{
+    //                    attrs:{
+    //                        src:this.data.url,
+    //                        controls:'controls',
+    //                        autoplay:'autoplay'
+    //                    }
+    //                })
+    //            ]);
+    //        }
+    //    };
+
+       var TextItem = {
+           props:['data'],
+           render:function(createElement){
+               return createElement('div',[
+                   createElement('p','文本组件'),
+                   createElement('p',JSON.stringify(this.data))
+               ]);
+           }
+       };
+
+       Vue.component('smart-item',{
+           functional:true,
+           render:function(createElement,context){
+               function getComponent(){
+                   var data = context.props.data;
+                //    if(data.type === 'img') return ImgItem;
+                //    if(data.type === 'video') return VideoItem;
+                   return TextItem;
+               };
+               alert(context.children);
+               return createElement(
+                   getComponent(),{
+                       props:{
+                           data:context.props.data
+                       }
+                   },
+                   context.children
+               );
+           },
+           props:{
+               data:{
+                   type:Object,
+                   required:true
+               }
+           }
+       });
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                data:{}
+            },
+            methods:{
+                change:function(type){
+                    if(type === 'img'){
+                        this.data = {
+                            type:'img',
+                            url:'xx.png',
+                        }
+                    }else if('video' === type){
+                        this.data ={
+                            type:'video',
+                            url:'yy.mp4'
+                        }
+                    }else{
+                        this.data = {
+                            type:'text',
+                            text :'xxxxx'
+                        }
+                    }
+                    // alert(JSON.stringify(this.data));
+                }
+            },
+            created:function(){
+                this.change('text');
+            }
+        });
+    </script>
+</body>
+
+</html>
